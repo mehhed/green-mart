@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 const Home = () => {
   return (
     <>
-      <h1 className="text-3xl"> i am home </h1>
+      <h1 className="text-3xl"> </h1>
     </>
   );
 };

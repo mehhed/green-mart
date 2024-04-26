@@ -7,3 +7,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* customize css  */
+/*  customize css here  */
+.hover-menu-content {
+  visibility: hidden;
+  height: 0px;
+  overflow: hidden;
+  transition: height 1s, visibility 1s;
+}
+.hover-menu-parent:hover .hover-menu-content {
+  visibility: visible;
+  height: 170px;
+}
