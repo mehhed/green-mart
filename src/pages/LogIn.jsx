@@ -42,6 +42,15 @@ const LogIn = () => {
                 className="bg-gray-200 px-4 py-2 mt-5 rounded-md "
               />
             </div>
+            <hr />
+            <div className="flex gap-4 justify-center items-end">
+              <span className="bg-gray-200 px-4 py-2 mt-5 rounded-md ">
+                Google
+              </span>
+              <span className="bg-gray-200 px-4 py-2 mt-5 rounded-md ">
+                Facebook
+              </span>
+            </div>
           </form>
         </div>
       </div>
