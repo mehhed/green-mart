@@ -1,6 +1,31 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthProvider } from "../Authentication/AuthenticationProvider";
 
 const LogIn = () => {
+  const { signin, setUser } = useContext(AuthProvider);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // function for log in by email password
+  const handleLogInWithEmailPassword = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email, password);
+    signin(email, password)
+      .then((res) => {
+        const user = res.user;
+        setUser(user);
+        console.log(user);
+        navigate(location.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log("kaise error");
+        console.log(error);
+      });
+  };
+
   return (
     <div className="w-full md:py-10 py-5 px-5 md:px-10 mx-auto">
       <h2 className="text-center md:text-4xl text-2xl uppercase font-semibold mb-5 bg-[#f6f6f6] md:py-5 py-3">
@@ -16,18 +41,19 @@ const LogIn = () => {
         </div>
         <div className="flex-1">
           <form
+            onSubmit={handleLogInWithEmailPassword}
             action=""
             className="border px-5 md:px-10 pt-20 pb-12 flex flex-col gap-5">
             <input
               type="email"
-              name=""
+              name="email"
               id=""
               className="p-2 text-lg border rounded-sm outline-none"
               placeholder="  Email"
             />
             <input
               type="password"
-              name=""
+              name="password"
               id=""
               className="p-2 text-lg border rounded-sm outline-none"
               placeholder="  Password"
@@ -43,14 +69,6 @@ const LogIn = () => {
               />
             </div>
             <hr />
-            <div className="flex gap-4 justify-center items-end">
-              <span className="bg-gray-200 px-4 py-2 mt-5 rounded-md ">
-                Google
-              </span>
-              <span className="bg-gray-200 px-4 py-2 mt-5 rounded-md ">
-                Facebook
-              </span>
-            </div>
           </form>
         </div>
       </div>

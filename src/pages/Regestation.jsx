@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../Authentication/AuthenticationProvider";
 import { getAuth, updateProfile } from "firebase/auth";
-import app from "../firebase.init";
+import app from "../firebse.config";
 import Swal from "sweetalert2";
 
 // sweet alert
@@ -45,7 +45,7 @@ const Regestation = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Your work has been saved",
+            title: "aceount created successfully ",
             showConfirmButton: false,
             timer: 1500,
           });

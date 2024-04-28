@@ -5,6 +5,9 @@ import RooteHome from "../rootFolder/RooteHome";
 import Home from "../pages/Home";
 import LogIn from "../pages/LogIn";
 import Regestation from "../pages/Regestation";
+import PrivetChack from "../pages/PrivetChack";
+import PrivatRoute from "../privatRoute/PrivatRoute";
+import Dashbord from "../pages/Dashbord";
 
 const Router = createBrowserRouter([
   {
@@ -22,6 +25,22 @@ const Router = createBrowserRouter([
       {
         path: "/signUp",
         element: <Regestation></Regestation>,
+      },
+      {
+        path: "/privat",
+        element: (
+          <PrivatRoute>
+            <PrivetChack></PrivetChack>
+          </PrivatRoute>
+        ),
+      },
+      {
+        path: "/Dashbord",
+        element: (
+          <PrivatRoute>
+            <Dashbord></Dashbord>
+          </PrivatRoute>
+        ),
       },
     ],
   },
