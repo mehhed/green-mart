@@ -59,11 +59,6 @@ const NavigationBar = () => {
         </div>
         {/* other nav */}
         <div className=" lg:flex-1 flex justify-end items-center gap-3 text-gray-400 lg:px-5">
-          <Link to={"/privat"}>
-            <span className="md:text-4xl">
-              <MdFavoriteBorder />
-            </span>
-          </Link>
           <Link to={"/login"}>
             <span className="md:text-4xl">
               <GiShoppingCart />
