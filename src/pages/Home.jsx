@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { ImStack } from "react-icons/im";
+import { FaPlus } from "react-icons/fa";
+import { GoDash } from "react-icons/go";
 
 const Home = () => {
   return (
@@ -58,16 +60,18 @@ const Home = () => {
           Browse By categories
         </h2>
         <div className="lg:grid hidden gap-5 lg:grid-cols-4">
-          <div className=" rounded-md bg-[#f6f6f6] relative h-[100px]">
-            <img
-              src="https://media.istockphoto.com/id/478663945/photo/seafood-on-ice.jpg?s=612x612&w=0&k=20&c=6IATPRCmg8T0k0cdwI98xqOZS6-P1swI39RrHLiWxW4="
-              className="h-[100%] w-full object-cover rounded-md"
-              alt=""
-            />
-            <div className="absolute top-0 left-0 rounded-md bg-black text-white bg-opacity-75 h-full w-full flex justify-center items-center text-3xl font-semibold">
-              FISH
+          <Link to={"/allProduct/fish"}>
+            <div className=" rounded-md bg-[#f6f6f6] relative h-[100px]">
+              <img
+                src="https://media.istockphoto.com/id/478663945/photo/seafood-on-ice.jpg?s=612x612&w=0&k=20&c=6IATPRCmg8T0k0cdwI98xqOZS6-P1swI39RrHLiWxW4="
+                className="h-[100%] w-full object-cover rounded-md"
+                alt=""
+              />
+              <div className="absolute top-0 left-0 rounded-md bg-black text-white bg-opacity-75 h-full w-full flex justify-center items-center text-3xl font-semibold">
+                FISH
+              </div>
             </div>
-          </div>
+          </Link>
           <div className=" rounded-md bg-[#f6f6f6] relative h-[100px]">
             <img
               src="https://t3.ftcdn.net/jpg/02/26/53/80/360_F_226538033_C42p96JDNwkSdQs86Agxd1TtaVJsyJ71.jpg"
@@ -119,6 +123,7 @@ const Home = () => {
               alt=""
             />
           </div>
+          1{" "}
           <div className="flex-1 h-full w-full">
             <div className="h-full w-full  grid xl:grid-rows-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {/* single product card */}
@@ -142,46 +147,11 @@ const Home = () => {
                         1
                       </div>
                       <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
+                        <div className=" border p-1 rounded-md font-bold">
+                          <FaPlus />
                         </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
+                        <div className=" border p-1 rounded-md font-bold">
+                          <GoDash></GoDash>
                         </div>
                       </div>
                     </div>
@@ -212,46 +182,11 @@ const Home = () => {
                         1
                       </div>
                       <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
+                        <div className=" border p-1 rounded-md font-bold">
+                          <FaPlus />
                         </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
+                        <div className=" border p-1 rounded-md font-bold">
+                          <GoDash></GoDash>
                         </div>
                       </div>
                     </div>
@@ -282,11 +217,11 @@ const Home = () => {
                         1
                       </div>
                       <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
+                        <div className=" border p-1 rounded-md font-bold">
+                          <FaPlus />
                         </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
+                        <div className=" border p-1 rounded-md font-bold">
+                          <GoDash></GoDash>
                         </div>
                       </div>
                     </div>
@@ -317,11 +252,81 @@ const Home = () => {
                         1
                       </div>
                       <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
+                        <div className=" border p-1 rounded-md font-bold">
+                          <FaPlus />
                         </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
+                        <div className=" border p-1 rounded-md font-bold">
+                          <GoDash></GoDash>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="uppercase border p-2 rounded-md text-sm text-center">
+                    Add to Cart
+                  </div>
+                </div>
+              </div>
+
+              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
+                <div className="flex-1 h-full w-full">
+                  <img
+                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
+                    alt=""
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                {/* card body  */}
+                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
+                  <h3 className="text-lg">
+                    Black Plum (kalo jam) 500<sub>gm</sub>
+                  </h3>
+                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
+                  <div className="flex justify-between items-center bg-slate-300">
+                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
+                      <div className="flex-1 flex justify-center items-center text-lg">
+                        1
+                      </div>
+                      <div className=" flex-1 flex justify-center items-center  gap-2">
+                        <div className=" border p-1 rounded-md font-bold">
+                          <FaPlus />
+                        </div>
+                        <div className=" border p-1 rounded-md font-bold">
+                          <GoDash></GoDash>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="uppercase border p-2 rounded-md text-sm text-center">
+                    Add to Cart
+                  </div>
+                </div>
+              </div>
+
+              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
+                <div className="flex-1 h-full w-full">
+                  <img
+                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
+                    alt=""
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                {/* card body  */}
+                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
+                  <h3 className="text-lg">
+                    Black Plum (kalo jam) 500<sub>gm</sub>
+                  </h3>
+                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
+                  <div className="flex justify-between items-center bg-slate-300">
+                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
+                      <div className="flex-1 flex justify-center items-center text-lg">
+                        1
+                      </div>
+                      <div className=" flex-1 flex justify-center items-center  gap-2">
+                        <div className=" border p-1 rounded-md font-bold">
+                          <FaPlus />
+                        </div>
+                        <div className=" border p-1 rounded-md font-bold">
+                          <GoDash></GoDash>
                         </div>
                       </div>
                     </div>
@@ -363,215 +368,6 @@ const Home = () => {
           <div className="flex-1 h-full w-full">
             <div className="h-full w-full  grid xl:grid-rows-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {/* single product card */}
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -604,215 +400,6 @@ const Home = () => {
           <div className="flex-1 h-full w-full">
             <div className="h-full w-full  grid xl:grid-rows-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {/* single product card */}
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -823,7 +410,7 @@ const Home = () => {
           </span>
         </Link>
       </section>
-      {/* vegetables section */}
+      {/* Meat section */}
       <section className="p-5 mt-5 bg-[#f6f6f6] relative">
         {/* section heading */}
         <div className="flex justify-between items-center mb-5">
@@ -845,215 +432,6 @@ const Home = () => {
           <div className="flex-1 h-full w-full">
             <div className="h-full w-full  grid xl:grid-rows-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {/* single product card */}
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border px-2 rounded-md font-bold">
-                          +
-                        </div>
-                        <div className=" border px-2 rounded-md font-bold">
-                          -
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

@@ -60,9 +60,9 @@ const NavigationBar = () => {
         {/* other nav */}
         <div className=" lg:flex-1 flex justify-end items-center gap-3 text-gray-400 lg:px-5">
           <Link to={"/login"}>
-            <span className="md:text-4xl">
+            <Link to={"/cart/mail"} className="md:text-4xl">
               <GiShoppingCart />
-            </span>
+            </Link>
           </Link>
           <Link to={"/Dashbord"}>
             <span className="md:text-3xl">
@@ -125,6 +125,11 @@ const NavigationBar = () => {
                 Home
               </Link>
             </li>
+            <li className="border-b-gray-400 border-2 ">
+              <Link to={"/"} className="focus:bg-gray-300 focus:rounded-none">
+                All Product
+              </Link>
+            </li>
             <li className="border-b-gray-400 border-2">
               <Link className="focus:bg-gray-300 focus:rounded-none">
                 Vegetables
@@ -157,7 +162,7 @@ const NavigationBar = () => {
       </div>
 
       {/* sub navigation bar  */}
-      <div className="bg-[#f6f6f6] lg:flex items-center px-[100px] hidden ">
+      {/* <div className="bg-[#f6f6f6] lg:flex items-center px-[100px] hidden ">
         <div className="relative hover-menu-parent">
           <Link className="border-r-4 pr-5 py-4 border-white flex items-center  gap-2">
             <HiMenuAlt2 /> <span>ALL CATEGORIES</span>
@@ -171,9 +176,12 @@ const NavigationBar = () => {
         </div>
         <div className="ms-auto">
           <Link className="inline-block py-4 ">Home</Link>
+          <Link to={"/allProduct/allProdut"} className="inline-block py-4 ml-5">
+            All Product
+          </Link>
           <Link className="inline-block py-4 ml-5 ">Contact Us </Link>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

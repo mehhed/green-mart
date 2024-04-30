@@ -5,9 +5,12 @@ import RooteHome from "../rootFolder/RooteHome";
 import Home from "../pages/Home";
 import LogIn from "../pages/LogIn";
 import Regestation from "../pages/Regestation";
-import PrivetChack from "../pages/PrivetChack";
 import PrivatRoute from "../privatRoute/PrivatRoute";
 import Dashbord from "../pages/Dashbord";
+import AllProduct from "../pages/AllProduct";
+import SingleProduct from "../pages/SingleProduct";
+import AddToCart from "../pages/AddToCart";
+import AdminHome from "../pages/adminPage/AdminHome";
 
 const Router = createBrowserRouter([
   {
@@ -27,12 +30,16 @@ const Router = createBrowserRouter([
         element: <Regestation></Regestation>,
       },
       {
-        path: "/privat",
-        element: (
-          <PrivatRoute>
-            <PrivetChack></PrivetChack>
-          </PrivatRoute>
-        ),
+        path: "/allProduct/:_id",
+        element: <AllProduct></AllProduct>,
+      },
+      {
+        path: "/productDetails/:_id",
+        element: <SingleProduct></SingleProduct>,
+      },
+      {
+        path: "/addToCart/:_id",
+        element: <AddToCart></AddToCart>,
       },
       {
         path: "/Dashbord",
@@ -41,6 +48,16 @@ const Router = createBrowserRouter([
             <Dashbord></Dashbord>
           </PrivatRoute>
         ),
+        children: [
+          {
+            path: "Dashbord",
+            element: <AdminHome></AdminHome>,
+          },
+          {
+            path: "adminHome",
+            element: <AdminHome></AdminHome>,
+          },
+        ],
       },
     ],
   },
