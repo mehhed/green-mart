@@ -1,5 +1,6 @@
 import {
   createUserWithEmailAndPassword,
+  deleteUser,
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -33,6 +34,11 @@ const AuthenticationProvider = ({ children }) => {
   const signOutuser = () => {
     setLoader(true);
     return signOut(auth);
+  };
+
+  // to do
+  const userDelete = () => {
+    return deleteUser(auth);
   };
 
   useEffect(() => {

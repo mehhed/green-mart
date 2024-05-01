@@ -1,11 +1,15 @@
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../Authentication/AuthenticationProvider";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const LogIn = () => {
   const { signin, setUser } = useContext(AuthProvider);
   const navigate = useNavigate();
   const location = useLocation();
+
+  // import axios public
+  const axiosPublic = useAxiosPublic();
 
   // function for log in by email password
   const handleLogInWithEmailPassword = (e) => {
@@ -17,6 +21,13 @@ const LogIn = () => {
       .then((res) => {
         const user = res.user;
         setUser(user);
+        // user details
+        const name = user?.displayName;
+        const userEmail = user?.email;
+        const userRole = "user";
+        const userData = { name, userEmail, userRole };
+        axiosPublic.post("/users", userData);
+
         console.log(user);
         navigate(location.state ? location.state : "/");
       })

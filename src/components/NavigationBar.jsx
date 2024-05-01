@@ -26,12 +26,6 @@ const NavigationBar = () => {
             className="text-gray-400 md:text-4xl lg:hidden">
             <HiMenuAlt1></HiMenuAlt1>
           </label>
-
-          <label
-            htmlFor="my-drawer-one"
-            className="text-gray-400 md:text-4xl lg:hidden">
-            <IoSearchOutline></IoSearchOutline>
-          </label>
         </div>
 
         {/*shop logo */}
@@ -44,26 +38,17 @@ const NavigationBar = () => {
             />
           </Link>
         </div>
-        {/* search bar  */}
-        <div className="flex-1 lg:flex hidden">
-          <input
-            className=" border-2 border-[#1c8e4b] w-full rounded-s-lg p-2 text-lg outline-none "
-            type="text"
-            name=""
-            id=""
-            placeholder=" Search"
-          />
-          <div className="h-auto  bg-green-600 rounded-e-lg cursor-pointer text-white px-3 md:text-3xl flex justify-center items-center">
-            <IoSearchOutline />
-          </div>
-        </div>
-        {/* other nav */}
         <div className=" lg:flex-1 flex justify-end items-center gap-3 text-gray-400 lg:px-5">
-          <Link to={"/login"}>
-            <Link to={"/cart/mail"} className="md:text-4xl">
-              <GiShoppingCart />
-            </Link>
+          {/* cart page navigator  */}
+          <Link to={"/cart/mail"} className="md:text-4xl mr-5">
+            <div className="indicator">
+              <span className="indicator-item badge badge-secondary">10</span>
+              <button className="">
+                <GiShoppingCart />
+              </button>
+            </div>
           </Link>
+          {/* deshbord navigator */}
           <Link to={"/Dashbord"}>
             <span className="md:text-3xl">
               <FaRegUserCircle></FaRegUserCircle>
@@ -73,43 +58,8 @@ const NavigationBar = () => {
       </div>
 
       {/*========================================= droyer for smaller device nabbar ======================================================= */}
-
-      {/* droyer one  */}
-      <div className="drawer">
-        <input id="my-drawer-one" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content">{/* Page content here */}</div>
-        <div className="drawer-side">
-          <label
-            htmlFor="my-drawer-one"
-            aria-label="close sidebar"
-            className="drawer-overlay"></label>
-          <ul className="menu  p-4  min-h-full bg-base-200 text-base-content">
-            {/* Sidebar content here */}
-            <label
-              htmlFor="my-drawer-one"
-              aria-label="close sidebar"
-              className="drawer-overlay mb-5 ml-auto">
-              <RxCross1 />
-            </label>
-
-            <div className="flex">
-              <input
-                className=" border-2 border-[#1c8e4b] w-full rounded-s-lg p-2 text-lg outline-none "
-                type="text"
-                name=""
-                id=""
-                placeholder=" Search"
-              />
-              <div className="h-auto    bg-green-600 rounded-e-lg cursor-pointer text-white px-3 text-3xl flex justify-center items-center">
-                <IoSearchOutline />
-              </div>
-            </div>
-          </ul>
-        </div>
-      </div>
-
-      {/* droyer two   */}
-      <div className="drawer">
+      {/* drawer   */}
+      <div className="drawer z-50">
         <input id="my-drawer-two" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">{/* Page content here */}</div>
         <div className="drawer-side">
@@ -162,12 +112,12 @@ const NavigationBar = () => {
       </div>
 
       {/* sub navigation bar  */}
-      {/* <div className="bg-[#f6f6f6] lg:flex items-center px-[100px] hidden ">
+      <div className="bg-[#f6f6f6] lg:flex items-center px-[100px] hidden mb-5 ">
         <div className="relative hover-menu-parent">
           <Link className="border-r-4 pr-5 py-4 border-white flex items-center  gap-2">
             <HiMenuAlt2 /> <span>ALL CATEGORIES</span>
           </Link>
-          <div className="flex flex-col absolute top-[100%] left-0 w-full border-r-2 bg-white border-white hover-menu-content ">
+          <div className="flex flex-col absolute top-[100%] left-0 w-full border-r-2 bg-white border-white hover-menu-content z-40">
             <Link className="border border-b-2 p-2 ">Fish</Link>
             <Link className="border border-b-2 p-2 ">Meat</Link>
             <Link className="border border-b-2 p-2 ">Fruits</Link>
@@ -181,7 +131,7 @@ const NavigationBar = () => {
           </Link>
           <Link className="inline-block py-4 ml-5 ">Contact Us </Link>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };

@@ -1,9 +1,48 @@
 import { Link } from "react-router-dom";
 import { ImStack } from "react-icons/im";
-import { FaPlus } from "react-icons/fa";
-import { GoDash } from "react-icons/go";
+
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+import ProductCardOne from "../components/ProductCardOne";
+import { useEffect, useState } from "react";
 
 const Home = () => {
+  const axiosPublic = useAxiosPublic();
+
+  // useState for vagetabel
+  const [vegetables, setVegetables] = useState([]);
+
+  // useState for fruit
+  const [fruit, setFruit] = useState([]);
+  // useState for meat
+  const [meat, setMeat] = useState([]);
+  // useState for fish
+  const [fish, setFish] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const vegResponse = await axiosPublic.get(
+          "/VEGETABLES?categori=VEGETABLES"
+        );
+        setVegetables(vegResponse.data);
+
+        const fruitResponse = await axiosPublic.get("/FRUITS?categori=FRUITS");
+        setFruit(fruitResponse.data);
+
+        const meatResponse = await axiosPublic.get("/MEAT?categori=MEAT");
+        setMeat(meatResponse.data);
+
+        const fishResponse = await axiosPublic.get("/FISH?categori=FISH");
+        setFish(fishResponse.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [axiosPublic, fruit]);
+
+  // console.log(fish);
   return (
     <div className="my-5 px-5 lg:px-20">
       {/* =================================== banner section ==================================== */}
@@ -63,7 +102,7 @@ const Home = () => {
           <Link to={"/allProduct/fish"}>
             <div className=" rounded-md bg-[#f6f6f6] relative h-[100px]">
               <img
-                src="https://media.istockphoto.com/id/478663945/photo/seafood-on-ice.jpg?s=612x612&w=0&k=20&c=6IATPRCmg8T0k0cdwI98xqOZS6-P1swI39RrHLiWxW4="
+                src="https://raw.githubusercontent.com/mehhed/fakeData/main/0002127_fish_370.png"
                 className="h-[100%] w-full object-cover rounded-md"
                 alt=""
               />
@@ -84,7 +123,7 @@ const Home = () => {
           </div>
           <div className=" rounded-md bg-[#f6f6f6] relative h-[100px]">
             <img
-              src="https://hips.hearstapps.com/hmg-prod/images/fresh-fruits-royalty-free-image-1648833703.jpg?crop=1xw:0.39237xh;center,top&resize=1200:*"
+              src="https://raw.githubusercontent.com/mehhed/fakeData/main/0002128_fruits_370.png"
               className="h-[100%] w-full object-cover rounded-md"
               alt=""
             />
@@ -94,7 +133,7 @@ const Home = () => {
           </div>
           <div className=" rounded-md bg-[#f6f6f6] relative h-[100px]">
             <img
-              src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
+              src="https://raw.githubusercontent.com/mehhed/fakeData/main/0002125_vegetables_370.png"
               className="h-[100%] w-full object-cover rounded-md"
               alt=""
             />
@@ -115,227 +154,22 @@ const Home = () => {
             seasonal fruits
           </h2>
         </div>
-        <div className="flex justify-between items-center xl:h-[400px]  gap-5">
+        <div className="flex justify-between items-center   gap-5">
           <div className="h-full hidden xl:block">
             <img
-              src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
+              src="https://raw.githubusercontent.com/mehhed/fakeData/main/0002128_fruits_370.png"
               className="h-[100%] max-w-[300px] object-cover"
               alt=""
             />
           </div>
-          1{" "}
           <div className="flex-1 h-full w-full">
             <div className="h-full w-full  grid xl:grid-rows-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {/* single product card */}
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border p-1 rounded-md font-bold">
-                          <FaPlus />
-                        </div>
-                        <div className=" border p-1 rounded-md font-bold">
-                          <GoDash></GoDash>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border p-1 rounded-md font-bold">
-                          <FaPlus />
-                        </div>
-                        <div className=" border p-1 rounded-md font-bold">
-                          <GoDash></GoDash>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border p-1 rounded-md font-bold">
-                          <FaPlus />
-                        </div>
-                        <div className=" border p-1 rounded-md font-bold">
-                          <GoDash></GoDash>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border p-1 rounded-md font-bold">
-                          <FaPlus />
-                        </div>
-                        <div className=" border p-1 rounded-md font-bold">
-                          <GoDash></GoDash>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border p-1 rounded-md font-bold">
-                          <FaPlus />
-                        </div>
-                        <div className=" border p-1 rounded-md font-bold">
-                          <GoDash></GoDash>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
-
-              <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-                <div className="flex-1 h-full w-full">
-                  <img
-                    src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                {/* card body  */}
-                <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-                  <h3 className="text-lg">
-                    Black Plum (kalo jam) 500<sub>gm</sub>
-                  </h3>
-                  <p className="text-lg font-bold text-green-400">80.00 tk</p>
-                  <div className="flex justify-between items-center bg-slate-300">
-                    <div className="flex justify-between items-center gap-2 border p-1 w-full">
-                      <div className="flex-1 flex justify-center items-center text-lg">
-                        1
-                      </div>
-                      <div className=" flex-1 flex justify-center items-center  gap-2">
-                        <div className=" border p-1 rounded-md font-bold">
-                          <FaPlus />
-                        </div>
-                        <div className=" border p-1 rounded-md font-bold">
-                          <GoDash></GoDash>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="uppercase border p-2 rounded-md text-sm text-center">
-                    Add to Cart
-                  </div>
-                </div>
-              </div>
+              {fruit.map((oneData) => (
+                <ProductCardOne
+                  key={oneData?._id}
+                  oneData={oneData}></ProductCardOne>
+              ))}
             </div>
           </div>
         </div>
@@ -357,10 +191,10 @@ const Home = () => {
             fresh vegetables
           </h2>
         </div>
-        <div className="flex justify-between items-center xl:h-[400px]  gap-5">
+        <div className="flex justify-between items-center   gap-5">
           <div className="h-full hidden xl:block">
             <img
-              src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
+              src="https://raw.githubusercontent.com/mehhed/fakeData/main/0002125_vegetables_370.png"
               className="h-[100%] max-w-[300px] object-cover"
               alt=""
             />
@@ -368,6 +202,11 @@ const Home = () => {
           <div className="flex-1 h-full w-full">
             <div className="h-full w-full  grid xl:grid-rows-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {/* single product card */}
+              {vegetables.map((oneData) => (
+                <ProductCardOne
+                  key={oneData?._id}
+                  oneData={oneData}></ProductCardOne>
+              ))}
             </div>
           </div>
         </div>
@@ -389,10 +228,10 @@ const Home = () => {
             Fresh Fish
           </h2>
         </div>
-        <div className="flex justify-between items-center xl:h-[400px]  gap-5">
+        <div className="flex justify-between items-center   gap-5">
           <div className="h-full hidden xl:block">
             <img
-              src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
+              src="https://raw.githubusercontent.com/mehhed/fakeData/main/0002127_fish_370.png"
               className="h-[100%] max-w-[300px] object-cover"
               alt=""
             />
@@ -400,6 +239,11 @@ const Home = () => {
           <div className="flex-1 h-full w-full">
             <div className="h-full w-full  grid xl:grid-rows-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {/* single product card */}
+              {fish.map((oneData) => (
+                <ProductCardOne
+                  key={oneData?._id}
+                  oneData={oneData}></ProductCardOne>
+              ))}
             </div>
           </div>
         </div>
@@ -421,10 +265,10 @@ const Home = () => {
             Fresh & processed meat
           </h2>
         </div>
-        <div className="flex justify-between items-center xl:h-[400px]  gap-5">
+        <div className="flex justify-between items-center   gap-5">
           <div className="h-full hidden xl:block">
             <img
-              src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6"
+              src="https://raw.githubusercontent.com/mehhed/fakeData/main/0002126_meat_370.png"
               className="h-[100%] max-w-[300px] object-cover"
               alt=""
             />
@@ -432,6 +276,11 @@ const Home = () => {
           <div className="flex-1 h-full w-full">
             <div className="h-full w-full  grid xl:grid-rows-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {/* single product card */}
+              {meat.map((oneData) => (
+                <ProductCardOne
+                  key={oneData?._id}
+                  oneData={oneData}></ProductCardOne>
+              ))}
             </div>
           </div>
         </div>

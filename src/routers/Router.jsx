@@ -11,6 +11,9 @@ import AllProduct from "../pages/AllProduct";
 import SingleProduct from "../pages/SingleProduct";
 import AddToCart from "../pages/AddToCart";
 import AdminHome from "../pages/adminPage/AdminHome";
+import ManageUser from "../pages/adminPage/ManageUser";
+import AddProduct from "../pages/adminPage/AddProduct";
+import Settings from "../components/deshbordComponent/adminComponent/Settings";
 
 const Router = createBrowserRouter([
   {
@@ -49,6 +52,7 @@ const Router = createBrowserRouter([
           </PrivatRoute>
         ),
         children: [
+          // admin route
           {
             path: "Dashbord",
             element: <AdminHome></AdminHome>,
@@ -56,6 +60,18 @@ const Router = createBrowserRouter([
           {
             path: "adminHome",
             element: <AdminHome></AdminHome>,
+          },
+          {
+            path: "manageUser",
+            element: <ManageUser></ManageUser>,
+          },
+          {
+            path: "addProduct",
+            element: <AddProduct></AddProduct>,
+          },
+          {
+            path: "settings",
+            element: <Settings></Settings>,
           },
         ],
       },
