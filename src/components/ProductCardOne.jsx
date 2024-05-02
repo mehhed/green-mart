@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 const ProductCardOne = ({ oneData }) => {
   const { currentUser } = useContext(AuthProvider);
   const axiosPublic = useAxiosPublic();
+
   // quntity controler for add to cart
   const [quntity, setQuntity] = useState(1);
   const plusQuntity = () => {
@@ -22,10 +23,19 @@ const ProductCardOne = ({ oneData }) => {
   };
 
   // product data
-  const { _id, productName, PropertieImage, Price } = oneData;
+  const { _id, productName, PropertieImage, Price, productCategories } =
+    oneData;
 
   const handleAddToCart = async () => {
-    const addCart = { id: _id, BuyerEmail: currentUser?.email };
+    const addCart = {
+      id: _id,
+      BuyerEmail: currentUser?.email,
+      productName,
+      PropertieImage,
+      quntity,
+      productCategories,
+      Price,
+    };
 
     const adminOrUser = await axiosPublic.get(`/getUser/${currentUser?.email}`);
     console.log(adminOrUser?.data?.userRole);

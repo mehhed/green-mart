@@ -35,14 +35,20 @@ const Router = createBrowserRouter([
       {
         path: "/allProduct/:_id",
         element: <AllProduct></AllProduct>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allProduct?categories=${params._id}`),
       },
       {
         path: "/productDetails/:_id",
         element: <SingleProduct></SingleProduct>,
       },
       {
-        path: "/addToCart/:_id",
-        element: <AddToCart></AddToCart>,
+        path: "/addToCartPage",
+        element: (
+          <PrivatRoute>
+            <AddToCart></AddToCart>
+          </PrivatRoute>
+        ),
       },
       {
         path: "/Dashbord",

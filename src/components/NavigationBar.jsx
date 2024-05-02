@@ -9,27 +9,37 @@ import { HiMenuAlt1, HiMenuAlt2 } from "react-icons/hi";
 import { RxCross1 } from "react-icons/rx";
 
 import "../index.css";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthProvider } from "../Authentication/AuthenticationProvider";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const NavigationBar = () => {
   // loged in user details
   const { currentUser } = useContext(AuthProvider);
+  const axiosPublic = useAxiosPublic();
+
+  const [totalCartItems, setCartItems] = useState([]);
+  useEffect(() => {
+    axiosPublic.get(`/allCart?email=${currentUser?.email}`).then((res) => {
+      setCartItems(res?.data);
+      // console.log(res.data);
+    });
+  }, [axiosPublic, currentUser?.email]);
 
   return (
     <>
       {/*  navigation for dasktop  */}
-      <div className=" flex justify-between items-center lg:px-[100px] px-5 lg:gap-10 gap-1  ">
+      <div className=" flex justify-between items-center lg:px-[100px] px-5 lg:gap-10 gap-1 py-[20px] lg:py-0">
         <div className="flex justify-center items-center gap-5">
           <label
             htmlFor="my-drawer-two"
-            className="text-gray-400 md:text-4xl lg:hidden">
+            className="text-gray-400 text-4xl lg:hidden">
             <HiMenuAlt1></HiMenuAlt1>
           </label>
         </div>
 
         {/*shop logo */}
-        <div className="flex-1">
+        <div className="flex-1 hidden lg:block">
           <Link href="/" className="inline-block mx-auto lg:me-auto">
             <img
               className="h-auto sm:max-w-[300px]"
@@ -40,9 +50,11 @@ const NavigationBar = () => {
         </div>
         <div className=" lg:flex-1 flex justify-end items-center gap-3 text-gray-400 lg:px-5">
           {/* cart page navigator  */}
-          <Link to={"/cart/mail"} className="md:text-4xl mr-5">
+          <Link to={"/addToCartPage"} className="text-3xl mr-5 mt-2">
             <div className="indicator">
-              <span className="indicator-item badge badge-secondary">10</span>
+              <span className="indicator-item badge badge-secondary">
+                {totalCartItems.length > 10 ? "10+" : totalCartItems.length}
+              </span>
               <button className="">
                 <GiShoppingCart />
               </button>
@@ -50,7 +62,7 @@ const NavigationBar = () => {
           </Link>
           {/* deshbord navigator */}
           <Link to={"/Dashbord"}>
-            <span className="md:text-3xl">
+            <span className="text-3xl">
               <FaRegUserCircle></FaRegUserCircle>
             </span>
           </Link>
@@ -126,7 +138,9 @@ const NavigationBar = () => {
         </div>
         <div className="ms-auto">
           <Link className="inline-block py-4 ">Home</Link>
-          <Link to={"/allProduct/allProdut"} className="inline-block py-4 ml-5">
+          <Link
+            to={"/allProduct/allProduct"}
+            className="inline-block py-4 ml-5">
             All Product
           </Link>
           <Link className="inline-block py-4 ml-5 ">Contact Us </Link>
