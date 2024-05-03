@@ -59,24 +59,24 @@ const SideNavigation = ({ handleSignOut }) => {
                 <Link to={"/Dashbord"} className="py-3">
                   <FaUserTie className="text-xl"></FaUserTie> My Aceount
                 </Link>
-                <Link to={"adminHome"} className="py-3">
+                <Link to={"Transaction"} className="py-3">
                   <FaClipboardList className="text-xl"></FaClipboardList>{" "}
                   Transaction
                 </Link>
                 <Link to={"manageUser"} className="py-3">
                   <FaUserGroup className="text-xl"></FaUserGroup> Customer
                 </Link>
-                <Link to={"adminHome"} className="py-3">
-                  <GrOrderedList className="text-xl"></GrOrderedList> Order
+                <Link to={"Orders"} className="py-3">
+                  <GrOrderedList className="text-xl"></GrOrderedList> Orders
                 </Link>
-                <Link to={"adminHome"} className="py-3">
+                <Link to={"Promote"} className="py-3">
                   <FcAdvertising className="text-xl"></FcAdvertising> Promote
                 </Link>
                 <Link to={"addProduct"} className="py-3">
                   <MdOutlineAddBox className="text-xl"></MdOutlineAddBox> Add
                   product
                 </Link>
-                <Link to={"adminHome"} className="py-3">
+                <Link to={"UpdateProduct"} className="py-3">
                   <GrUpdate className="text-xl"></GrUpdate> Update Product
                 </Link>
                 <Link to={"Settings"} className="py-3">
@@ -93,10 +93,6 @@ const SideNavigation = ({ handleSignOut }) => {
               <li className="space-y-3">
                 <Link to={"/Dashbord"} className="py-3">
                   <FaUserTie className="text-xl"></FaUserTie> My Aceount
-                </Link>
-                <Link to={"adminHome"} className="py-3">
-                  <FaClipboardList className="text-xl"></FaClipboardList> My
-                  Order
                 </Link>
               </li>
             )}

@@ -164,24 +164,24 @@ const NavigationBar = () => {
               {/* admin route  */}
               {adminChacker.userRole == "admin" && (
                 <>
-                  <Link to={"adminHome"} className="py-3">
+                  <Link to={"/Dashbord/Transaction"} className="py-3">
                     <FaClipboardList className="text-xl"></FaClipboardList>{" "}
                     Transaction
                   </Link>
                   <Link to={"/Dashbord/manageUser"} className="py-3">
                     <FaUserGroup className="text-xl"></FaUserGroup> Customer
                   </Link>
-                  <Link to={"adminHome"} className="py-3">
+                  <Link to={"/Dashbord/Orders"} className="py-3">
                     <GrOrderedList className="text-xl"></GrOrderedList> Order
                   </Link>
-                  <Link to={"adminHome"} className="py-3">
+                  <Link to={"/Dashbord/Promote"} className="py-3">
                     <FcAdvertising className="text-xl"></FcAdvertising> Promote
                   </Link>
                   <Link to={"/Dashbord/addProduct"} className="py-3">
                     <MdOutlineAddBox className="text-xl"></MdOutlineAddBox> Add
                     product
                   </Link>
-                  <Link to={"adminHome"} className="py-3">
+                  <Link to={"/Dashbord/UpdateProduct"} className="py-3">
                     <GrUpdate className="text-xl"></GrUpdate> Update Product
                   </Link>
                   <Link to={"/Dashbord/Settings"} className="py-3">
@@ -199,10 +199,6 @@ const NavigationBar = () => {
               <li className="space-y-3">
                 <Link to={"/Dashbord"} className="py-3">
                   <FaUserTie className="text-xl"></FaUserTie> My Aceount
-                </Link>
-                <Link to={"/Dashbord/MyOrder"} className="py-3">
-                  <FaClipboardList className="text-xl"></FaClipboardList> My
-                  Order
                 </Link>
               </li>
             )}

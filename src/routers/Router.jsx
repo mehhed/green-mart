@@ -18,7 +18,10 @@ import AdminDashbord from "../pages/adminPage/AdminDashbord";
 import UserAceount from "../pages/UserAceount";
 import UserDeshbord from "../pages/userPage/UserDeshbord";
 import Message from "../pages/adminPage/Message";
-import MyOrder from "../pages/userPage/MyOrder";
+import Transaction from "../pages/adminPage/Transaction";
+import Orders from "../pages/adminPage/Orders";
+import Promote from "../pages/adminPage/Promote";
+import UpdateProduct from "../pages/adminPage/UpdateProduct";
 
 const Router = createBrowserRouter([
   {
@@ -90,15 +93,27 @@ const Router = createBrowserRouter([
             path: "message",
             element: <Message></Message>,
           },
+          {
+            path: "Transaction",
+            element: <Transaction></Transaction>,
+          },
+          {
+            path: "Orders",
+            element: <Orders></Orders>,
+          },
+          {
+            path: "Promote",
+            element: <Promote></Promote>,
+          },
+          {
+            path: "UpdateProduct",
+            element: <UpdateProduct></UpdateProduct>,
+          },
 
           // userRoute
           {
             path: "userDeshbord",
             element: <UserDeshbord></UserDeshbord>,
-          },
-          {
-            path: "MyOrder",
-            element: <MyOrder></MyOrder>,
           },
         ],
       },
