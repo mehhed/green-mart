@@ -1,16 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useNavigation } from "react-router-dom";
 import { ImStack } from "react-icons/im";
 
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import ProductCardOne from "../components/ProductCardOne";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthProvider } from "../Authentication/AuthenticationProvider";
 
 const Home = () => {
   const axiosPublic = useAxiosPublic();
-
+  const { currentUser } = useContext(AuthProvider);
   // useState for vagetabel
   const [vegetables, setVegetables] = useState([]);
-
   // useState for fruit
   const [fruit, setFruit] = useState([]);
   // useState for meat
@@ -18,39 +18,66 @@ const Home = () => {
   // useState for fish
   const [fish, setFish] = useState([]);
 
+  // banner related useState
+  // main banner
+  const [mainBanner, setMainBnner] = useState({});
+  //  sub banners
+  const [subBannerOne, setSubbBannerOne] = useState({});
+  const [subBannerTwo, setSubbBannerTwo] = useState({});
+  const [subBannerThree, setSubbBannerThree] = useState({});
+  const [subBannerFour, setSubbBannerFour] = useState({});
+
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const vegResponse = await axiosPublic.get(
-          "/VEGETABLES?categori=VEGETABLES"
-        );
-        setVegetables(vegResponse.data);
+      // try {
+      const vegResponse = await axiosPublic.get(
+        "/VEGETABLES?categori=VEGETABLES"
+      );
+      setVegetables(vegResponse.data);
 
-        const fruitResponse = await axiosPublic.get("/FRUITS?categori=FRUITS");
-        setFruit(fruitResponse.data);
+      const fruitResponse = await axiosPublic.get("/FRUITS?categori=FRUITS");
+      setFruit(fruitResponse.data);
 
-        const meatResponse = await axiosPublic.get("/MEAT?categori=MEAT");
-        setMeat(meatResponse.data);
+      const meatResponse = await axiosPublic.get("/MEAT?categori=MEAT");
+      setMeat(meatResponse.data);
 
-        const fishResponse = await axiosPublic.get("/FISH?categori=FISH");
-        setFish(fishResponse.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
+      const fishResponse = await axiosPublic.get("/FISH?categori=FISH");
+      setFish(fishResponse.data);
     };
 
+    // main banner
+    axiosPublic
+      .get("/banner?bannerName=mainBanner")
+      .then((res) => setMainBnner(res.data));
+    // sub banner
+    axiosPublic
+      .get("/banner?bannerName=subBannerOne")
+      .then((res) => setSubbBannerOne(res.data));
+    // sub banner
+    axiosPublic
+      .get("/banner?bannerName=subBannerTwo")
+      .then((res) => setSubbBannerTwo(res.data));
+    // sub banner
+    axiosPublic
+      .get("/banner?bannerName=subBannerThree")
+      .then((res) => setSubbBannerThree(res.data));
+    // sub banner
+    axiosPublic
+      .get("/banner?bannerName=subBannerFour")
+      .then((res) => setSubbBannerFour(res.data));
+
     fetchData();
-  }, [axiosPublic, fruit]);
+  }, [currentUser?.email]);
 
   // console.log(fish);
   return (
     <div className="my-5 px-5 lg:px-20">
       {/* =================================== banner section ==================================== */}
-      <section className=" md:h-[400px] md:flex  justify-between gap-3 items-center  p-5 bg-[#f6f6f6]">
+      <section className=" lg:h-[400px] lg:flex  justify-between gap-3 items-center  p-5 bg-[#f6f6f6] hidden">
         {/* main banner  */}
         <div className="flex-1 h-full mb-3 md:mb-0">
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7JG1mIrN-IaHg8wKfjekewUU5wuMD2wO7XtKQEZgxjQ&s"
+            src={mainBanner?.bannerImg}
             className="h-[100%] w-full object-fill "
             alt=""
           />
@@ -61,15 +88,15 @@ const Home = () => {
           <div className="flex-1 0 h-full w-full flex justify-between items-center gap-3">
             <div className="flex-1  w-full h-full">
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7JG1mIrN-IaHg8wKfjekewUU5wuMD2wO7XtKQEZgxjQ&s"
-                className="h-[100%] w-full "
+                src={subBannerOne?.bannerImg}
+                className="h-[174px] w-full "
                 alt=""
               />
             </div>
             <div className="flex-1  w-full h-full">
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7JG1mIrN-IaHg8wKfjekewUU5wuMD2wO7XtKQEZgxjQ&s"
-                className="h-[100%] w-full "
+                src={subBannerTwo?.bannerImg}
+                className="h-[174px] w-full "
                 alt=""
               />
             </div>
@@ -78,15 +105,15 @@ const Home = () => {
           <div className="flex-1  h-full w-full flex justify-between items-center gap-3">
             <div className="flex-1  w-full h-full">
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7JG1mIrN-IaHg8wKfjekewUU5wuMD2wO7XtKQEZgxjQ&s"
-                className="h-[100%] w-full "
+                src={subBannerThree?.bannerImg}
+                className="h-[174px] w-full "
                 alt=""
               />
             </div>
             <div className="flex-1  w-full h-full">
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7JG1mIrN-IaHg8wKfjekewUU5wuMD2wO7XtKQEZgxjQ&s"
-                className="h-[100%] w-full "
+                src={subBannerFour?.bannerImg}
+                className="h-[174px] w-full "
                 alt=""
               />
             </div>
@@ -99,7 +126,7 @@ const Home = () => {
           Browse By categories
         </h2>
         <div className="lg:grid hidden gap-5 lg:grid-cols-4">
-          <Link to={"/allProduct/fish"}>
+          <Link to={"/allProduct/FISH"}>
             <div className=" rounded-md bg-[#f6f6f6] relative h-[100px]">
               <img
                 src="https://raw.githubusercontent.com/mehhed/fakeData/main/0002127_fish_370.png"
@@ -111,7 +138,9 @@ const Home = () => {
               </div>
             </div>
           </Link>
-          <div className=" rounded-md bg-[#f6f6f6] relative h-[100px]">
+          <Link
+            to={"/allProduct/MEAT"}
+            className=" rounded-md bg-[#f6f6f6] relative h-[100px]">
             <img
               src="https://t3.ftcdn.net/jpg/02/26/53/80/360_F_226538033_C42p96JDNwkSdQs86Agxd1TtaVJsyJ71.jpg"
               className="h-[100%] w-full object-cover rounded-md"
@@ -120,8 +149,10 @@ const Home = () => {
             <div className="absolute top-0 left-0 rounded-md bg-black text-white bg-opacity-75 h-full w-full flex justify-center items-center text-3xl font-semibold">
               MEAT
             </div>
-          </div>
-          <div className=" rounded-md bg-[#f6f6f6] relative h-[100px]">
+          </Link>
+          <Link
+            to={"/allProduct/FRUITS"}
+            className=" rounded-md bg-[#f6f6f6] relative h-[100px]">
             <img
               src="https://raw.githubusercontent.com/mehhed/fakeData/main/0002128_fruits_370.png"
               className="h-[100%] w-full object-cover rounded-md"
@@ -130,8 +161,10 @@ const Home = () => {
             <div className="absolute top-0 left-0 rounded-md bg-black text-white bg-opacity-75 h-full w-full flex justify-center items-center text-3xl font-semibold">
               FRUITS
             </div>
-          </div>
-          <div className=" rounded-md bg-[#f6f6f6] relative h-[100px]">
+          </Link>
+          <Link
+            to={"/allProduct/VEGETABLES"}
+            className=" rounded-md bg-[#f6f6f6] relative h-[100px]">
             <img
               src="https://raw.githubusercontent.com/mehhed/fakeData/main/0002125_vegetables_370.png"
               className="h-[100%] w-full object-cover rounded-md"
@@ -140,7 +173,7 @@ const Home = () => {
             <div className="absolute top-0 left-0 rounded-md bg-black text-white bg-opacity-75 h-full w-full flex justify-center items-center text-3xl font-semibold uppercase">
               Vegetables
             </div>
-          </div>
+          </Link>
         </div>
       </section>
       {/* fruits section */}
@@ -163,21 +196,31 @@ const Home = () => {
             />
           </div>
           <div className="flex-1 h-full w-full">
-            <div className="h-full w-full  grid xl:grid-rows-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {/* single product card */}
-              {fruit.map((oneData) => (
-                <ProductCardOne
-                  key={oneData?._id}
-                  oneData={oneData}></ProductCardOne>
-              ))}
-            </div>
+            {fruit.length ? (
+              <div className="h-full w-full  grid xl:grid-rows-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {/* single product card */}
+                {fruit.map((oneData) => (
+                  <ProductCardOne
+                    key={oneData?._id}
+                    oneData={oneData}></ProductCardOne>
+                ))}
+              </div>
+            ) : (
+              <img
+                src="https://raw.githubusercontent.com/mehhed/fakeData/main/360_F_385614508_K1aFSB0lhI17ZaW8lsNLQeP09xNA43gF-removebg-preview.png"
+                className="h-full mx-auto"
+                alt=""
+              />
+            )}
           </div>
         </div>
         {/* see all button  */}
         <Link className="uppercase px-5 py-2 text-lg font-bold text-white bg-[#30985b] inline-block mt-5  xl:absolute bottom-0 left-0">
-          <span className="flex justify-start gap-2 items-center">
+          <Link
+            to={"/allProduct/FRUITS"}
+            className="flex justify-start gap-2 items-center">
             <ImStack /> See All Product
-          </span>
+          </Link>
         </Link>
       </section>
       {/* vegetables section */}
@@ -200,21 +243,31 @@ const Home = () => {
             />
           </div>
           <div className="flex-1 h-full w-full">
-            <div className="h-full w-full  grid xl:grid-rows-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {/* single product card */}
-              {vegetables.map((oneData) => (
-                <ProductCardOne
-                  key={oneData?._id}
-                  oneData={oneData}></ProductCardOne>
-              ))}
-            </div>
+            {vegetables.length ? (
+              <div className="h-full w-full  grid xl:grid-rows-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {/* single product card */}
+                {vegetables.map((oneData) => (
+                  <ProductCardOne
+                    key={oneData?._id}
+                    oneData={oneData}></ProductCardOne>
+                ))}
+              </div>
+            ) : (
+              <img
+                src="https://raw.githubusercontent.com/mehhed/fakeData/main/360_F_385614508_K1aFSB0lhI17ZaW8lsNLQeP09xNA43gF-removebg-preview.png"
+                className="h-full mx-auto"
+                alt=""
+              />
+            )}
           </div>
         </div>
         {/* see all button  */}
         <Link className="uppercase px-5 py-2 text-lg font-bold text-white bg-[#30985b] inline-block mt-5  xl:absolute bottom-0 left-0">
-          <span className="flex justify-start gap-2 items-center">
+          <Link
+            to={"/allProduct/VEGETABLES"}
+            className="flex justify-start gap-2 items-center">
             <ImStack /> See All Product
-          </span>
+          </Link>
         </Link>
       </section>
       {/* Fish section */}
@@ -237,21 +290,31 @@ const Home = () => {
             />
           </div>
           <div className="flex-1 h-full w-full">
-            <div className="h-full w-full  grid xl:grid-rows-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {/* single product card */}
-              {fish.map((oneData) => (
-                <ProductCardOne
-                  key={oneData?._id}
-                  oneData={oneData}></ProductCardOne>
-              ))}
-            </div>
+            {fish.length ? (
+              <div className="h-full w-full  grid xl:grid-rows-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {/* single product card */}
+                {fish.map((oneData) => (
+                  <ProductCardOne
+                    key={oneData?._id}
+                    oneData={oneData}></ProductCardOne>
+                ))}
+              </div>
+            ) : (
+              <img
+                src="https://raw.githubusercontent.com/mehhed/fakeData/main/360_F_385614508_K1aFSB0lhI17ZaW8lsNLQeP09xNA43gF-removebg-preview.png"
+                className="h-full mx-auto"
+                alt=""
+              />
+            )}
           </div>
         </div>
         {/* see all button  */}
         <Link className="uppercase px-5 py-2 text-lg font-bold text-white bg-[#30985b] inline-block mt-5  xl:absolute bottom-0 left-0">
-          <span className="flex justify-start gap-2 items-center">
+          <Link
+            to={"/allProduct/FISH"}
+            className="flex justify-start gap-2 items-center">
             <ImStack /> See All Product
-          </span>
+          </Link>
         </Link>
       </section>
       {/* Meat section */}
@@ -274,21 +337,31 @@ const Home = () => {
             />
           </div>
           <div className="flex-1 h-full w-full">
-            <div className="h-full w-full  grid xl:grid-rows-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {/* single product card */}
-              {meat.map((oneData) => (
-                <ProductCardOne
-                  key={oneData?._id}
-                  oneData={oneData}></ProductCardOne>
-              ))}
-            </div>
+            {meat.length ? (
+              <div className="h-full w-full  grid xl:grid-rows-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {/* single product card */}
+                {meat.map((oneData) => (
+                  <ProductCardOne
+                    key={oneData?._id}
+                    oneData={oneData}></ProductCardOne>
+                ))}
+              </div>
+            ) : (
+              <img
+                src="https://raw.githubusercontent.com/mehhed/fakeData/main/360_F_385614508_K1aFSB0lhI17ZaW8lsNLQeP09xNA43gF-removebg-preview.png"
+                className="h-full mx-auto"
+                alt=""
+              />
+            )}
           </div>
         </div>
         {/* see all button  */}
         <Link className="uppercase px-5 py-2 text-lg font-bold text-white bg-[#30985b] inline-block mt-5  xl:absolute bottom-0 left-0">
-          <span className="flex justify-start gap-2 items-center">
+          <Link
+            to={"/allProduct/MEAT"}
+            className="flex justify-start gap-2 items-center">
             <ImStack /> See All Product
-          </span>
+          </Link>
         </Link>
       </section>
     </div>

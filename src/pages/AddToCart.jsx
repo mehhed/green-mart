@@ -17,7 +17,7 @@ const AddToCart = () => {
       setCartItems(res?.data);
       // console.log(res.data);
     });
-  }, [axiosPublic, currentUser?.email]);
+  }, [currentUser?.email]);
 
   return (
     <div className="px-5 md:px-10 lg:px-20 grid grid-cols-1 lg:grid-cols-3 mt-5 gap-5">

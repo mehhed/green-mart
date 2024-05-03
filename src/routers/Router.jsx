@@ -10,10 +10,15 @@ import Dashbord from "../pages/Dashbord";
 import AllProduct from "../pages/AllProduct";
 import SingleProduct from "../pages/SingleProduct";
 import AddToCart from "../pages/AddToCart";
-import AdminHome from "../pages/adminPage/AdminHome";
 import ManageUser from "../pages/adminPage/ManageUser";
 import AddProduct from "../pages/adminPage/AddProduct";
-import Settings from "../components/deshbordComponent/adminComponent/Settings";
+import Settings from "../pages/adminPage/Settings";
+import Contact from "../pages/Contact";
+import AdminDashbord from "../pages/adminPage/AdminDashbord";
+import UserAceount from "../pages/UserAceount";
+import UserDeshbord from "../pages/userPage/UserDeshbord";
+import Message from "../pages/adminPage/Message";
+import MyOrder from "../pages/userPage/MyOrder";
 
 const Router = createBrowserRouter([
   {
@@ -33,10 +38,12 @@ const Router = createBrowserRouter([
         element: <Regestation></Regestation>,
       },
       {
+        path: "/contact",
+        element: <Contact></Contact>,
+      },
+      {
         path: "/allProduct/:_id",
         element: <AllProduct></AllProduct>,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/allProduct?categories=${params._id}`),
       },
       {
         path: "/productDetails/:_id",
@@ -60,12 +67,12 @@ const Router = createBrowserRouter([
         children: [
           // admin route
           {
-            path: "Dashbord",
-            element: <AdminHome></AdminHome>,
+            path: "/Dashbord",
+            element: <UserAceount></UserAceount>,
           },
           {
-            path: "adminHome",
-            element: <AdminHome></AdminHome>,
+            path: "adminDashbord",
+            element: <AdminDashbord></AdminDashbord>,
           },
           {
             path: "manageUser",
@@ -78,6 +85,20 @@ const Router = createBrowserRouter([
           {
             path: "settings",
             element: <Settings></Settings>,
+          },
+          {
+            path: "message",
+            element: <Message></Message>,
+          },
+
+          // userRoute
+          {
+            path: "userDeshbord",
+            element: <UserDeshbord></UserDeshbord>,
+          },
+          {
+            path: "MyOrder",
+            element: <MyOrder></MyOrder>,
           },
         ],
       },

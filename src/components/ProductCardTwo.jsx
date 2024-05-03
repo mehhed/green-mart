@@ -4,8 +4,10 @@ import { GoDash } from "react-icons/go";
 import PropTypes from "prop-types";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { AuthProvider } from "../Authentication/AuthenticationProvider";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const ProductCardTwo = ({ oneProduct }) => {
+  const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
   const { currentUser } = useContext(AuthProvider);
   // quntity controler for add to cart
@@ -45,7 +47,8 @@ const ProductCardTwo = ({ oneProduct }) => {
         }
       });
     } else {
-      alert("someting wrong");
+      // alert("you need to log in first");
+      navigate("/logIn");
     }
   };
   return (

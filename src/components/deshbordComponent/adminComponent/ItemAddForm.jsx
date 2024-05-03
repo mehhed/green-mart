@@ -34,7 +34,6 @@ const ItemAddForm = () => {
 
     // post img to img bb and get url
     console.log(Image);
-
     const imageFile = { image: productImag };
     const res = await axiosPublic.post(image_hosting_api, imageFile, {
       headers: {
