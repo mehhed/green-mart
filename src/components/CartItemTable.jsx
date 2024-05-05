@@ -1,12 +1,14 @@
 import { MdDelete } from "react-icons/md";
 import PropTypes from "prop-types";
 
-const CartItemTable = ({ oneCartData }) => {
+const CartItemTable = ({ oneCartData, handleDeleteFromCart }) => {
   const { _id, id, productName, PropertieImage, quntity, Price } = oneCartData;
   return (
     <tr className=" border-b">
       <td className="py-2">
-        <button className="btn ml-2 text-lg">
+        <button
+          className="btn ml-2 text-lg"
+          onClick={() => handleDeleteFromCart(_id)}>
           <MdDelete></MdDelete>
         </button>
       </td>
@@ -25,4 +27,5 @@ export default CartItemTable;
 
 CartItemTable.propTypes = {
   oneCartData: PropTypes.object,
+  handleDeleteFromCart: PropTypes.func,
 };

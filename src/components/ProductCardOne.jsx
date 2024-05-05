@@ -6,10 +6,15 @@ import { AuthProvider } from "../Authentication/AuthenticationProvider";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 // toast
 import "react-toastify/dist/ReactToastify.css";
+import useCart from "../Hooks/useCart";
+import { useNavigate } from "react-router-dom";
 
 const ProductCardOne = ({ oneData }) => {
   const { currentUser } = useContext(AuthProvider);
   const axiosPublic = useAxiosPublic();
+  const { cart, setCart } = useCart();
+
+  const navigate = useNavigate();
 
   // quntity controler for add to cart
   const [quntity, setQuntity] = useState(1);
@@ -44,11 +49,13 @@ const ProductCardOne = ({ oneData }) => {
     } else if (adminOrUser?.data?.userRole == "user") {
       return axiosPublic.post("/addToCart", addCart).then((res) => {
         if (res.data.acknowledged) {
+          const newCart = [...cart, addCart];
+          setCart(newCart);
           alert("item add to cart");
         }
       });
     } else {
-      alert("someting wrong");
+      navigate("/logIn");
     }
   };
 

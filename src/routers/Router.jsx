@@ -22,6 +22,7 @@ import Transaction from "../pages/adminPage/Transaction";
 import Orders from "../pages/adminPage/Orders";
 import Promote from "../pages/adminPage/Promote";
 import UpdateProduct from "../pages/adminPage/UpdateProduct";
+import PaymentForm from "../pages/userPage/PaymentForm";
 
 const Router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const Router = createBrowserRouter([
       {
         path: "/signUp",
         element: <Regestation></Regestation>,
+      },
+      {
+        path: "/payment",
+        element: <PaymentForm></PaymentForm>,
       },
       {
         path: "/contact",

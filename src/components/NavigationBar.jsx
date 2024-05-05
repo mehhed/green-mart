@@ -10,9 +10,8 @@ import {
 import { GiFruitBowl, GiShoppingCart, GiVanillaFlower } from "react-icons/gi";
 import { HiMenuAlt1, HiMenuAlt2 } from "react-icons/hi";
 import "../index.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthProvider } from "../Authentication/AuthenticationProvider";
-import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { BiHome } from "react-icons/bi";
 import { SiCardano, SiWindows } from "react-icons/si";
 import { FaUserGroup } from "react-icons/fa6";
@@ -24,23 +23,14 @@ import { GiCirclingFish } from "react-icons/gi";
 import useAdmin from "../Hooks/useAdmin";
 import { MdMessage, MdOutlineAddBox } from "react-icons/md";
 import { IoSettingsSharp } from "react-icons/io5";
+import useCart from "../Hooks/useCart";
 
 const NavigationBar = () => {
   // loged in user details
   const { currentUser, signOutuser } = useContext(AuthProvider);
-  const axiosPublic = useAxiosPublic();
   const adminChacker = useAdmin();
   const navigate = useNavigate();
-
-  console.log(currentUser);
-  console.log(adminChacker);
-
-  const [totalCartItems, setCartItems] = useState([]);
-  useEffect(() => {
-    axiosPublic.get(`/allCart?email=${currentUser?.email}`).then((res) => {
-      setCartItems(res?.data);
-    });
-  }, [currentUser?.email]);
+  const { cart } = useCart();
 
   // signOut user
   const handleSignOut = () => {
@@ -85,7 +75,7 @@ const NavigationBar = () => {
             <Link to={"/addToCartPage"} className="text-3xl mr-5 mt-2">
               <div className="indicator">
                 <span className="indicator-item badge badge-secondary">
-                  {totalCartItems.length > 10 ? "10+" : totalCartItems.length}
+                  {cart.length > 10 ? "10+" : cart.length}
                 </span>
                 <button className="">
                   <GiShoppingCart />

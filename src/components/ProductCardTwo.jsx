@@ -1,12 +1,15 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { GoDash } from "react-icons/go";
 import PropTypes from "prop-types";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { AuthProvider } from "../Authentication/AuthenticationProvider";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import useCart from "../Hooks/useCart";
 
 const ProductCardTwo = ({ oneProduct }) => {
+  const { cart, setCart } = useCart();
+
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
   const { currentUser } = useContext(AuthProvider);
@@ -43,6 +46,8 @@ const ProductCardTwo = ({ oneProduct }) => {
     } else if (adminOrUser?.data?.userRole == "user") {
       return axiosPublic.post("/addToCart", addCart).then((res) => {
         if (res.data.acknowledged) {
+          const newCart = [...cart, addCart];
+          setCart(newCart);
           alert("item add to cart");
         }
       });

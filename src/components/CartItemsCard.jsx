@@ -2,7 +2,7 @@ import React from "react";
 import { MdDelete } from "react-icons/md";
 import PropTypes from "prop-types";
 
-const CartItemsCard = ({ oneCartData }) => {
+const CartItemsCard = ({ oneCartData, handleDeleteFromCart }) => {
   const { _id, id, productName, PropertieImage, quntity, Price } = oneCartData;
   return (
     <div className="border ">
@@ -11,7 +11,9 @@ const CartItemsCard = ({ oneCartData }) => {
         <p>{productName}</p>
       </div>
       <div className="flex justify-between items-center gap-3 mt-3 p-3">
-        <button className="btn rounded-none">
+        <button
+          className="btn rounded-none"
+          onClick={() => handleDeleteFromCart(_id)}>
           <MdDelete></MdDelete>
         </button>
         <div>
