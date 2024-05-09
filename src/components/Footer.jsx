@@ -55,7 +55,7 @@ const Footer = () => {
               className=" border border-[#1c8e4b] w-full rounded-s-lg p-2 text-lg outline-none "
               type="text"
               name=""
-              id=""
+              id="subscribeEmail"
               placeholder="Enter your email here....."
             />
             <div className="h-auto  bg-green-600 rounded-e-lg cursor-pointer text-white px-3 md:text-3xl flex justify-center items-center">

@@ -9,26 +9,32 @@ import { Link } from "react-router-dom";
 
 const AddToCart = () => {
   // loged in user details
-  const { currentUser, setLoading } = useContext(AuthProvider);
+  const { currentUser } = useContext(AuthProvider);
   const axiosPublic = useAxiosPublic();
-  // useState for cart items
-  const { cart, setCart } = useCart();
+  const [cartItems, setCartItems] = useState([]);
+  const { setCart } = useCart();
+
+  useEffect(() => {
+    axiosPublic.get(`/allCart?email=${currentUser?.email}`).then((res) => {
+      setCartItems(res?.data);
+    });
+  }, [currentUser?.email]);
 
   const handleDeleteFromCart = (_id) => {
     axiosPublic.delete(`/delete/${_id}`).then((res) => {
       console.log(res.data);
       if (res?.data?.deletedCount > 0) {
-        const newCartData = cart.filter((one) => one?._id != _id);
+        const newCartData = cartItems.filter((one) => one?._id != _id);
         setCart(newCartData);
+        setCartItems(newCartData);
       }
     });
   };
 
-  const totalPay = cart.reduce((total, currentItem) => {
+  const totalPay = cartItems.reduce((total, currentItem) => {
     return total + currentItem.Price * currentItem.quntity;
-  }, 50);
+  }, 0);
 
-  console.log(totalPay);
   return (
     <div className="px-5 md:px-10 lg:px-20 grid grid-cols-1 lg:grid-cols-3 mt-5 gap-5">
       <div className="col-span-2">
@@ -46,7 +52,7 @@ const AddToCart = () => {
             </thead>
             <tbody>
               {/* table row  */}
-              {cart.map((oneCartData) => (
+              {cartItems.map((oneCartData) => (
                 <CartItemTable
                   key={oneCartData._id}
                   oneCartData={oneCartData}
@@ -57,7 +63,7 @@ const AddToCart = () => {
         </div>
         <div className="md:hidden grid grid-cols-1 sm:grid-cols-2 gap-5">
           {/* single card */}
-          {cart.map((oneCartData) => (
+          {cartItems.map((oneCartData) => (
             <CartItemsCard
               key={oneCartData._id}
               oneCartData={oneCartData}
@@ -71,7 +77,7 @@ const AddToCart = () => {
         <div className="bg-[#f6f6f6] p-5 space-y-2">
           <div className="flex justify-between items-center">
             <p>Total:</p>
-            <p>{cart.length ? totalPay : "00"}.00৳</p>
+            <p>{cartItems.length ? totalPay : "00"}.00৳</p>
           </div>
           <div className="flex justify-between items-center">
             <p>Discount::</p>
@@ -91,7 +97,7 @@ const AddToCart = () => {
           </div>
           <div className="flex justify-between items-center">
             <p>Shipping:</p>
-            <p>{cart.length ? 50 : "00"}.00৳</p>
+            <p>{cartItems.length ? 50 : "00"}.00৳</p>
           </div>
           <div className="flex justify-between items-center">
             <p>tax:</p>
@@ -99,7 +105,7 @@ const AddToCart = () => {
           </div>
           <div className="flex justify-between items-center text-green-500 text-lg font-semibold">
             <p>Total:</p>
-            <p>{cart.length ? totalPay : "00"} </p>
+            <p>{cartItems.length ? totalPay + 50 : "00"} </p>
           </div>
           <div className="flex justify-between items-center text-green-500 text-lg font-semibold">
             {totalPay < 500 ? (

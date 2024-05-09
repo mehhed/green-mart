@@ -67,7 +67,7 @@ const Home = () => {
       .then((res) => setSubbBannerFour(res.data));
 
     fetchData();
-  }, [currentUser?.email]);
+  }, []);
 
   // console.log(fish);
   return (

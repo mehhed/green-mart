@@ -7,7 +7,6 @@ const useCart = () => {
 
   const axiosPublic = useAxiosPublic();
   const { currentUser } = useContext(AuthProvider);
-  const [load, setLoad] = useState(false);
 
   useEffect(() => {
     axiosPublic.get(`/allCart?email=${currentUser?.email}`).then((res) => {
@@ -15,9 +14,7 @@ const useCart = () => {
     });
   }, [currentUser?.email, cart]);
 
-  // console.log(cart.length);
-
-  const returner = { cart, setCart, load };
+  const returner = { cart, setCart };
   return returner;
 };
 

@@ -22,7 +22,9 @@ import Transaction from "../pages/adminPage/Transaction";
 import Orders from "../pages/adminPage/Orders";
 import Promote from "../pages/adminPage/Promote";
 import UpdateProduct from "../pages/adminPage/UpdateProduct";
-import PaymentForm from "../pages/userPage/PaymentForm";
+import PaymentForm from "../payments/PaymentForm";
+import PaymentSuccess from "../payments/PaymentSuccess";
+import PaymentFail from "../payments/PaymentFail";
 
 const Router = createBrowserRouter([
   {
@@ -44,6 +46,14 @@ const Router = createBrowserRouter([
       {
         path: "/payment",
         element: <PaymentForm></PaymentForm>,
+      },
+      {
+        path: "/paymentSuccess/:trans_id",
+        element: <PaymentSuccess></PaymentSuccess>,
+      },
+      {
+        path: "/paymentFail",
+        element: <PaymentFail></PaymentFail>,
       },
       {
         path: "/contact",

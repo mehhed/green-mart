@@ -45,7 +45,6 @@ const AllProduct = () => {
     // Compare the price of each object with the current maximum price
     if (obj.Price < minPrice) {
       setMinPrice(obj.Price);
-      console.log(obj.Price < minPrice);
     }
   });
 
