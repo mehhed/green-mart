@@ -18,13 +18,15 @@ import AdminDashbord from "../pages/adminPage/AdminDashbord";
 import UserAceount from "../pages/UserAceount";
 import UserDeshbord from "../pages/userPage/UserDeshbord";
 import Message from "../pages/adminPage/Message";
-import Transaction from "../pages/adminPage/Transaction";
-import Orders from "../pages/adminPage/Orders";
+import Transaction from "../pages/Transaction";
+import Orders from "../pages/Orders";
 import Promote from "../pages/adminPage/Promote";
 import UpdateProduct from "../pages/adminPage/UpdateProduct";
 import PaymentForm from "../payments/PaymentForm";
 import PaymentSuccess from "../payments/PaymentSuccess";
 import PaymentFail from "../payments/PaymentFail";
+import Subscribers from "../pages/adminPage/Subscribers";
+import UpdateForm from "../components/deshbordComponent/adminComponent/UpdateForm";
 
 const Router = createBrowserRouter([
   {
@@ -109,6 +111,10 @@ const Router = createBrowserRouter([
             element: <Message></Message>,
           },
           {
+            path: "subscriber",
+            element: <Subscribers></Subscribers>,
+          },
+          {
             path: "Transaction",
             element: <Transaction></Transaction>,
           },
@@ -124,11 +130,21 @@ const Router = createBrowserRouter([
             path: "UpdateProduct",
             element: <UpdateProduct></UpdateProduct>,
           },
+          {
+            path: "updateForm/:_id",
+            element: <UpdateForm></UpdateForm>,
+            loader: ({ params }) =>
+              fetch(`http://localhost:5000/forUpdate/${params._id}`),
+          },
 
           // userRoute
           {
             path: "userDeshbord",
             element: <UserDeshbord></UserDeshbord>,
+          },
+          {
+            path: "order",
+            element: <Orders></Orders>,
           },
         ],
       },

@@ -4,9 +4,10 @@ import { GoDash } from "react-icons/go";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import ProductCardTwo from "../components/ProductCardTwo";
-
+import useLoading from "../Hooks/useLoading";
 const AllProduct = () => {
   const axiosPublic = useAxiosPublic();
+  const { loading, setLoading } = useLoading();
 
   // useState for store all data
   const [data, setData] = useState([]);
@@ -25,6 +26,7 @@ const AllProduct = () => {
       .then((res) => {
         setAllProduct(res.data);
         setData(res.data);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -195,21 +197,30 @@ const AllProduct = () => {
         </div>
         {/* product section  */}
         <div className="col-span-3">
-          {allProduct.length ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-              {/* product card */}
-              {allProduct.map((oneProduct) => (
-                <ProductCardTwo
-                  key={oneProduct?._id}
-                  oneProduct={oneProduct}></ProductCardTwo>
-              ))}
+          {loading ? (
+            <div className="h-full w-full flex justify-center items-center">
+              <span className="loading loading-ring loading-lg"></span>
             </div>
           ) : (
-            <img
-              src="https://raw.githubusercontent.com/mehhed/fakeData/main/nodatafound.png"
-              className="w-full"
-              alt=""
-            />
+            <>
+              {" "}
+              {allProduct.length ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                  {/* product card */}
+                  {allProduct.map((oneProduct) => (
+                    <ProductCardTwo
+                      key={oneProduct?._id}
+                      oneProduct={oneProduct}></ProductCardTwo>
+                  ))}
+                </div>
+              ) : (
+                <img
+                  src="https://raw.githubusercontent.com/mehhed/fakeData/main/nodatafound.png"
+                  className="w-full"
+                  alt=""
+                />
+              )}
+            </>
           )}
         </div>
       </div>

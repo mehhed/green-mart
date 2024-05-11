@@ -1,8 +1,27 @@
 import React from "react";
+import { BiSend } from "react-icons/bi";
+import { BsSend } from "react-icons/bs";
 import { IoSearchOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const Footer = () => {
+  const axiosPublic = useAxiosPublic();
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.subscribeEmail.value;
+    axiosPublic.post("/subscriber", { email }).then((res) => {
+      if (res?.data) {
+        Swal.fire({
+          icon: "success",
+          title: "Thanks for withing us..",
+        });
+        form.reset();
+      }
+    });
+  };
   return (
     <div className=" border-t-2 mt-10 lg:mt-12">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 p-5 lg:p-10">
@@ -50,18 +69,27 @@ const Footer = () => {
             +8801933995057
           </a>
           <h1 className="text-lg font-bold my-2">NEWSLETTER </h1>
-          <div className="flex-1 flex">
-            <input
-              className=" border border-[#1c8e4b] w-full rounded-s-lg p-2 text-lg outline-none "
-              type="text"
-              name=""
-              id="subscribeEmail"
-              placeholder="Enter your email here....."
-            />
-            <div className="h-auto  bg-green-600 rounded-e-lg cursor-pointer text-white px-3 md:text-3xl flex justify-center items-center">
-              <IoSearchOutline />
+          <form onSubmit={handleSubscribe}>
+            <div className="flex-1 flex">
+              <input
+                className=" border border-[#1c8e4b] w-full rounded-s-lg p-2 text-lg outline-none "
+                type="text"
+                name=""
+                id="subscribeEmail"
+                placeholder="Enter your email here....."
+              />
+              {/* <input
+                type="submit"
+                className="h-auto  bg-green-600 rounded-e-lg cursor-pointer text-white px-3 md:text-3xl flex justify-center items-center">
+                <BsSend />
+              </input> */}
+              <input
+                type="submit"
+                value="send"
+                className="h-auto  bg-green-600 rounded-e-lg cursor-pointer text-white px-3 font-semibold flex justify-center items-center"
+              />
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>

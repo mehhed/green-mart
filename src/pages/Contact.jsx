@@ -1,16 +1,31 @@
 import Iframe from "react-iframe";
 import Swal from "sweetalert2";
-
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+import { useContext } from "react";
+import { AuthProvider } from "../Authentication/AuthenticationProvider";
 const Contact = () => {
+  const axiosPublic = useAxiosPublic();
+  const { currentUser } = useContext(AuthProvider);
   //  function for contact form
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    Swal.fire({
-      icon: "success",
-      title: "Our teem will contact with you...",
+    const name = form.name.value;
+    const email = form.email.value;
+    const message = form.message.value;
+    const profile = currentUser?.photoURL;
+
+    const messageData = { name, email, message, profile };
+
+    axiosPublic.post("/Contact", messageData).then((res) => {
+      if (res.data) {
+        Swal.fire({
+          icon: "success",
+          title: "Our teem will contact with you...",
+        });
+        form.reset();
+      }
     });
-    form.reset();
   };
   return (
     <div>

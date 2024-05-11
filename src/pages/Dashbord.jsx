@@ -21,7 +21,7 @@ const Dashbord = () => {
     <div className="flex gap-5 ">
       {/* side navigation bar  */}
       <SideNavigation handleSignOut={handleSignOut}></SideNavigation>
-      <div className="ms-auto h-full w-full">
+      <div className="ms-auto  w-full">
         <Outlet></Outlet>
       </div>
     </div>

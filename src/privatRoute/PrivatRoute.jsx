@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 const PrivatRoute = ({ children }) => {
   const { currentUser, loader } = useContext(AuthProvider);
   if (loader) {
-    return <span className="loading loading-ring loading-lg"></span>;
+    return;
   }
   if (currentUser) {
     return children;

@@ -21,7 +21,11 @@ import { PiSignOut } from "react-icons/pi";
 import { TbMeat } from "react-icons/tb";
 import { GiCirclingFish } from "react-icons/gi";
 import useAdmin from "../Hooks/useAdmin";
-import { MdMessage, MdOutlineAddBox } from "react-icons/md";
+import {
+  MdMessage,
+  MdOutlineAddBox,
+  MdOutlineAlternateEmail,
+} from "react-icons/md";
 import { IoSettingsSharp } from "react-icons/io5";
 import useCart from "../Hooks/useCart";
 
@@ -173,13 +177,17 @@ const NavigationBar = () => {
                   </Link>
                   <Link to={"/Dashbord/UpdateProduct"} className="py-3">
                     <GrUpdate className="text-xl"></GrUpdate> Update Product
+                  </Link>{" "}
+                  <Link to={"/Dashbord/message"} className="py-3">
+                    <MdMessage className="text-xl"></MdMessage> Message
+                  </Link>
+                  <Link to={"/Dashbord/subscriber"} className="py-3">
+                    <MdOutlineAlternateEmail className="text-xl"></MdOutlineAlternateEmail>{" "}
+                    Subscribers
                   </Link>
                   <Link to={"/Dashbord/Settings"} className="py-3">
                     <IoSettingsSharp className="text-xl"></IoSettingsSharp>{" "}
                     Settings
-                  </Link>
-                  <Link to={"/Dashbord/message"} className="py-3">
-                    <MdMessage className="text-xl"></MdMessage> Message
                   </Link>
                 </>
               )}
@@ -189,6 +197,13 @@ const NavigationBar = () => {
               <li className="space-y-3">
                 <Link to={"/Dashbord"} className="py-3">
                   <FaUserTie className="text-xl"></FaUserTie> My Aceount
+                </Link>
+                <Link to={"Transaction"} className="py-3">
+                  <FaClipboardList className="text-xl"></FaClipboardList>{" "}
+                  Transaction
+                </Link>
+                <Link to={"order"} className="py-3">
+                  <FaUserTie className="text-xl"></FaUserTie> My Order
                 </Link>
               </li>
             )}

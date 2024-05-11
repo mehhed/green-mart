@@ -9,7 +9,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 
+import useLoading from "../../Hooks/useLoading";
+
 const ManageUser = () => {
+  // loader
+  const { loading, setLoading } = useLoading();
+
   const [allUsers, setAllUsers] = useState([]);
   const axiosPublic = useAxiosPublic();
   // addmin counter
@@ -20,6 +25,7 @@ const ManageUser = () => {
   useEffect(() => {
     axiosPublic.get("/allUser").then((result) => {
       setAllUsers(result.data);
+      setLoading(false);
     });
 
     // total user and admin finder
@@ -102,40 +108,57 @@ const ManageUser = () => {
         </div>
       </div>
       {/* table for lerg screen */}
-      <div className="hidden lg:block">
-        <table className="w-full table rounded-none  table-zebra bg-[#f2f2f2]  ">
-          {/* head */}
-          <thead className="text-lg capitalize">
-            <tr className="border-b border-white">
-              <th>user name</th>
-              <th>user email</th>
-              <th>Make admin</th>
-              <th>Remov admin</th>
-              <th>status</th>
-              <th>Delete user</th>
-            </tr>
-          </thead>
-          <tbody>
+      {loading ? (
+        <div className="h-[300px] w-full flex justify-center items-center">
+          <span className="loading loading-ring loading-lg"></span>
+        </div>
+      ) : (
+        <>
+          <div className="hidden lg:block">
+            <table className="w-full table rounded-none  table-zebra bg-[#f2f2f2]  ">
+              {/* head */}
+              <thead className="text-lg capitalize">
+                <tr className="border-b border-white">
+                  <th>user name</th>
+                  <th>user email</th>
+                  <th>Make admin</th>
+                  <th>Remov admin</th>
+                  <th>status</th>
+                  <th>Delete user</th>
+                </tr>
+              </thead>
+              <tbody>
+                {allUsers.map((oneData) => (
+                  <UserList
+                    key={oneData?._id}
+                    oneData={oneData}
+                    handleDeleteUser={handleDeleteUser}
+                    handleMakeAdmin={handleMakeAdmin}></UserList>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+      {/* card for small screen */}
+      {loading ? (
+        <div className="h-[300px] w-full flex justify-center items-center lg:hidden">
+          <span className="loading loading-ring loading-lg"></span>
+        </div>
+      ) : (
+        <>
+          {" "}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:hidden">
             {allUsers.map((oneData) => (
-              <UserList
+              <UserListCard
                 key={oneData?._id}
                 oneData={oneData}
                 handleDeleteUser={handleDeleteUser}
-                handleMakeAdmin={handleMakeAdmin}></UserList>
+                handleMakeAdmin={handleMakeAdmin}></UserListCard>
             ))}
-          </tbody>
-        </table>
-      </div>
-      {/* card for small screen */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:hidden">
-        {allUsers.map((oneData) => (
-          <UserListCard
-            key={oneData?._id}
-            oneData={oneData}
-            handleDeleteUser={handleDeleteUser}
-            handleMakeAdmin={handleMakeAdmin}></UserListCard>
-        ))}
-      </div>
+          </div>
+        </>
+      )}
       <ToastContainer />
     </div>
   );

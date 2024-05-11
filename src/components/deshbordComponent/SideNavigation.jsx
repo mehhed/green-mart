@@ -1,18 +1,29 @@
 import React from "react";
 import { SiWindows } from "react-icons/si";
 import { PiSignOut } from "react-icons/pi";
-import { BiHome } from "react-icons/bi";
-import { FaClipboardList, FaUserTie } from "react-icons/fa";
+import { BiCart, BiHome } from "react-icons/bi";
+import {
+  FaClipboardList,
+  FaFirstOrder,
+  FaListUl,
+  FaUserTie,
+} from "react-icons/fa";
 import { FaUserGroup } from "react-icons/fa6";
 
 import { GrOrderedList, GrUpdate } from "react-icons/gr";
 import { FcAdvertising } from "react-icons/fc";
-import { MdMenu, MdMessage, MdOutlineAddBox } from "react-icons/md";
+import {
+  MdMenu,
+  MdMessage,
+  MdOutlineAddBox,
+  MdOutlineAlternateEmail,
+} from "react-icons/md";
 
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { IoSettingsSharp } from "react-icons/io5";
 import useAdmin from "../../Hooks/useAdmin";
+import { TbMenuOrder } from "react-icons/tb";
 
 const SideNavigation = ({ handleSignOut }) => {
   const adminChacker = useAdmin();
@@ -79,12 +90,16 @@ const SideNavigation = ({ handleSignOut }) => {
                 <Link to={"UpdateProduct"} className="py-3">
                   <GrUpdate className="text-xl"></GrUpdate> Update Product
                 </Link>
+                <Link to={"/Dashbord/message"} className="py-3">
+                  <MdMessage className="text-xl"></MdMessage> Message
+                </Link>
+                <Link to={"subscriber"} className="py-3">
+                  <MdOutlineAlternateEmail className="text-xl"></MdOutlineAlternateEmail>{" "}
+                  Subscribers
+                </Link>
                 <Link to={"Settings"} className="py-3">
                   <IoSettingsSharp className="text-xl"></IoSettingsSharp>{" "}
                   Settings
-                </Link>
-                <Link to={"/Dashbord/message"} className="py-3">
-                  <MdMessage className="text-xl"></MdMessage> Message
                 </Link>
               </li>
             )}{" "}
@@ -93,6 +108,14 @@ const SideNavigation = ({ handleSignOut }) => {
               <li className="space-y-3">
                 <Link to={"/Dashbord"} className="py-3">
                   <FaUserTie className="text-xl"></FaUserTie> My Aceount
+                </Link>
+                <Link to={"Transaction"} className="py-3">
+                  <FaClipboardList className="text-xl"></FaClipboardList>{" "}
+                  Transaction
+                </Link>
+
+                <Link to={"order"} className="py-3">
+                  <FaListUl className="text-xl"></FaListUl> My Order
                 </Link>
               </li>
             )}
