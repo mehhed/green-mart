@@ -36,11 +36,6 @@ const AuthenticationProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  // to do
-  const userDelete = () => {
-    return deleteUser(auth);
-  };
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);

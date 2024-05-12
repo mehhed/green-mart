@@ -49,7 +49,7 @@ const NavigationBar = () => {
   return (
     <>
       {/*  navigation for dasktop  */}
-      <div className=" flex justify-between items-center lg:px-[100px] px-5 lg:gap-10 gap-1 py-[20px] lg:py-0">
+      <div className=" flex justify-between items-center lg:px-[100px] px-5 lg:gap-10 gap-1 py-[20px] lg:py-0 bg-white">
         <div className="flex justify-center items-center gap-5">
           <label
             htmlFor="my-drawer-two"
@@ -76,7 +76,7 @@ const NavigationBar = () => {
           </Link>
           {/* cart page navigator  */}
           {adminChacker?.userRole == "user" && (
-            <Link to={"/addToCartPage"} className="text-3xl mr-5 mt-2">
+            <Link to={`/addToCartPage`} className="text-3xl mr-5 mt-2">
               <div className="indicator">
                 <span className="indicator-item badge badge-secondary">
                   {cart.length > 10 ? "10+" : cart.length}

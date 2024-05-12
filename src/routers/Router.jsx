@@ -27,6 +27,7 @@ import PaymentSuccess from "../payments/PaymentSuccess";
 import PaymentFail from "../payments/PaymentFail";
 import Subscribers from "../pages/adminPage/Subscribers";
 import UpdateForm from "../components/deshbordComponent/adminComponent/UpdateForm";
+import AdminPrivertRoute from "../privatRoute/AdminPrivertRoute";
 
 const Router = createBrowserRouter([
   {
@@ -48,15 +49,27 @@ const Router = createBrowserRouter([
       // payment and priver api
       {
         path: "/payment",
-        element: <PaymentForm></PaymentForm>,
+        element: (
+          <PrivatRoute>
+            <PaymentForm></PaymentForm>
+          </PrivatRoute>
+        ),
       },
       {
         path: "/paymentSuccess/:trans_id",
-        element: <PaymentSuccess></PaymentSuccess>,
+        element: (
+          <PrivatRoute>
+            <PaymentSuccess></PaymentSuccess>
+          </PrivatRoute>
+        ),
       },
       {
         path: "/paymentFail",
-        element: <PaymentFail></PaymentFail>,
+        element: (
+          <PrivatRoute>
+            <PaymentFail></PaymentFail>
+          </PrivatRoute>
+        ),
       },
       // =====================================
       {
@@ -90,51 +103,99 @@ const Router = createBrowserRouter([
           // admin route
           {
             path: "/Dashbord",
-            element: <UserAceount></UserAceount>,
+            element: (
+              <PrivatRoute>
+                <UserAceount></UserAceount>
+              </PrivatRoute>
+            ),
           },
           {
             path: "adminDashbord",
-            element: <AdminDashbord></AdminDashbord>,
+            element: (
+              <AdminPrivertRoute>
+                <AdminDashbord></AdminDashbord>
+              </AdminPrivertRoute>
+            ),
           },
           {
             path: "manageUser",
-            element: <ManageUser></ManageUser>,
+            element: (
+              <AdminPrivertRoute>
+                <ManageUser></ManageUser>
+              </AdminPrivertRoute>
+            ),
           },
           {
             path: "addProduct",
-            element: <AddProduct></AddProduct>,
+            element: (
+              <AdminPrivertRoute>
+                <AddProduct></AddProduct>
+              </AdminPrivertRoute>
+            ),
           },
           {
             path: "settings",
-            element: <Settings></Settings>,
+            element: (
+              <AdminPrivertRoute>
+                <Settings></Settings>
+              </AdminPrivertRoute>
+            ),
           },
           {
             path: "message",
-            element: <Message></Message>,
+            element: (
+              <AdminPrivertRoute>
+                <Message></Message>
+              </AdminPrivertRoute>
+            ),
           },
           {
             path: "subscriber",
-            element: <Subscribers></Subscribers>,
+            element: (
+              <AdminPrivertRoute>
+                <Subscribers></Subscribers>
+              </AdminPrivertRoute>
+            ),
           },
           {
             path: "Transaction",
-            element: <Transaction></Transaction>,
+            element: (
+              <PrivatRoute>
+                <Transaction></Transaction>
+              </PrivatRoute>
+            ),
           },
           {
             path: "Orders",
-            element: <Orders></Orders>,
+            element: (
+              <PrivatRoute>
+                <Orders></Orders>
+              </PrivatRoute>
+            ),
           },
           {
             path: "Promote",
-            element: <Promote></Promote>,
+            element: (
+              <AdminPrivertRoute>
+                <Promote></Promote>
+              </AdminPrivertRoute>
+            ),
           },
           {
             path: "UpdateProduct",
-            element: <UpdateProduct></UpdateProduct>,
+            element: (
+              <AdminPrivertRoute>
+                <UpdateProduct></UpdateProduct>
+              </AdminPrivertRoute>
+            ),
           },
           {
             path: "updateForm/:_id",
-            element: <UpdateForm></UpdateForm>,
+            element: (
+              <AdminPrivertRoute>
+                <UpdateForm></UpdateForm>
+              </AdminPrivertRoute>
+            ),
             loader: ({ params }) =>
               fetch(`http://localhost:5000/forUpdate/${params._id}`),
           },
@@ -142,11 +203,19 @@ const Router = createBrowserRouter([
           // userRoute
           {
             path: "userDeshbord",
-            element: <UserDeshbord></UserDeshbord>,
+            element: (
+              <PrivatRoute>
+                <UserDeshbord></UserDeshbord>
+              </PrivatRoute>
+            ),
           },
           {
             path: "order",
-            element: <Orders></Orders>,
+            element: (
+              <PrivatRoute>
+                <Orders></Orders>
+              </PrivatRoute>
+            ),
           },
         ],
       },

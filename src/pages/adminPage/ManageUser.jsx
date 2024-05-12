@@ -109,7 +109,7 @@ const ManageUser = () => {
       </div>
       {/* table for lerg screen */}
       {loading ? (
-        <div className="h-[300px] w-full flex justify-center items-center">
+        <div className="h-[300px] w-full lg:flex justify-center items-center hidden ">
           <span className="loading loading-ring loading-lg"></span>
         </div>
       ) : (
@@ -142,7 +142,7 @@ const ManageUser = () => {
       )}
       {/* card for small screen */}
       {loading ? (
-        <div className="h-[300px] w-full flex justify-center items-center ">
+        <div className="h-[300px] w-full flex justify-center items-center xl:hidden">
           <span className="loading loading-ring loading-lg"></span>
         </div>
       ) : (

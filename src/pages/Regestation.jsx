@@ -92,7 +92,7 @@ const Regestation = () => {
           Sign up
         </h2>
         <div className="grid grid-cols-1 md:flex justify-center items-center ">
-          <div className="flex-1">
+          <div className="flex-1 hidden lg:flex">
             <img
               src="https://raw.githubusercontent.com/mehhed/fakeData/main/Screenshot%202024-04-24%20214015.png"
               alt=""

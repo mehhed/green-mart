@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BiSend } from "react-icons/bi";
 import { BsSend } from "react-icons/bs";
 import { IoSearchOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { AuthProvider } from "../Authentication/AuthenticationProvider";
 
 const Footer = () => {
   const axiosPublic = useAxiosPublic();
+  const { currentUser } = useContext(AuthProvider);
+
   const handleSubscribe = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -47,21 +50,32 @@ const Footer = () => {
         </div>
         <div>
           <h1 className="text-lg font-bold mb-2">INFORMATION</h1>
-          <Link className="block p-2 my-1">Sitemap</Link>
-          <Link className="block p-2 my-1">Contact us</Link>
+          <Link
+            to={"https://maps.app.goo.gl/CvPfsLVyMTYN7xwZ8"}
+            className="block p-2 my-1">
+            Sitemap
+          </Link>
+          <Link to={"/contact"} className="block p-2 my-1">
+            Contact us
+          </Link>
           <Link className="block p-2 my-1">Privacy Policy</Link>
           <Link className="block p-2 my-1">Conditions of Use</Link>
           <Link className="block p-2 my-1">About us</Link>
         </div>
         <div>
           <h1 className="text-lg font-bold mb-2">MY ACCOUNT</h1>
-          <Link className="block p-2 my-1">My account</Link>
-          <Link className="block p-2 my-1">Orders</Link>
-          <Link className="block p-2 my-1">Addresses</Link>
+          <Link to={"/Dashbord"} className="block p-2 my-1">
+            My account
+          </Link>
+          <Link to={"/Dashbord/Orders"} className="block p-2 my-1">
+            Orders
+          </Link>
         </div>
         <div>
           <h1 className="text-lg font-bold mb-2">CUSTOMER SERVICE </h1>
-          <Link className="block p-2 my-1">My Cart</Link>
+          <Link to={"/addToCartPage"} className="block p-2 my-1">
+            My Cart
+          </Link>
         </div>
         <div className="flex-1">
           <h1 className="text-lg font-bold mb-2">CUSTOMER SERVICE </h1>
@@ -78,11 +92,6 @@ const Footer = () => {
                 id="subscribeEmail"
                 placeholder="Enter your email here....."
               />
-              {/* <input
-                type="submit"
-                className="h-auto  bg-green-600 rounded-e-lg cursor-pointer text-white px-3 md:text-3xl flex justify-center items-center">
-                <BsSend />
-              </input> */}
               <input
                 type="submit"
                 value="send"
