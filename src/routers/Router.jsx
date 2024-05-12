@@ -45,6 +45,7 @@ const Router = createBrowserRouter([
         path: "/signUp",
         element: <Regestation></Regestation>,
       },
+      // payment and priver api
       {
         path: "/payment",
         element: <PaymentForm></PaymentForm>,
@@ -57,6 +58,7 @@ const Router = createBrowserRouter([
         path: "/paymentFail",
         element: <PaymentFail></PaymentFail>,
       },
+      // =====================================
       {
         path: "/contact",
         element: <Contact></Contact>,

@@ -3,7 +3,7 @@ import ItemAddForm from "../../components/deshbordComponent/adminComponent/ItemA
 
 const AddProduct = () => {
   return (
-    <div className="pr-5 md:pr-10 text-gray-500">
+    <div className=" lg:ps-0 px-5  text-gray-500">
       <h1 className="text-lg text-center font-semibold md:text-2xl bg-[#f2f2f2] py-5">
         Add a new product
       </h1>

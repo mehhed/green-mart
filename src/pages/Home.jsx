@@ -108,17 +108,17 @@ const Home = () => {
         <>
           {" "}
           {/* =================================== banner section ==================================== */}
-          <section className=" lg:h-[400px] lg:flex  justify-between gap-3 items-center  p-5 bg-[#f6f6f6] hidden">
+          <section className=" lg:h-[400px] flex  justify-between gap-3 items-center  p-5 bg-[#f6f6f6] ">
             {/* main banner  */}
             <div className="flex-1 h-full mb-3 md:mb-0">
               <img
                 src={mainBanner?.bannerImg}
-                className="h-[100%] w-full object-fill "
+                className="lg:h-[100%] w-full object-fill "
                 alt=""
               />
             </div>
             {/* sub banner  */}
-            <div className="flex-1 h-full flex flex-col gap-3">
+            <div className="flex-1 h-full lg:flex flex-col gap-3 hidden">
               {/* sub banner part 1  */}
               <div className="flex-1 0 h-full w-full flex justify-between items-center gap-3">
                 <div className="flex-1  w-full h-full">
@@ -157,10 +157,10 @@ const Home = () => {
           </section>
           {/* categoris section  */}
           <section className="mt-5">
-            <h2 className="lg:text-3xl text-xl font-semibold mb-5 uppercase hidden lg:block text-green-500">
+            <h2 className="lg:text-3xl text-xl font-semibold mb-5 uppercase md:block hidden  text-green-500">
               Browse By categories
             </h2>
-            <div className="lg:grid hidden gap-5 lg:grid-cols-4">
+            <div className="md:grid hidden gap-5 md:grid-cols-4">
               <Link to={"/allProduct/FISH"}>
                 <div className=" rounded-md bg-[#f6f6f6] relative h-[100px]">
                   <img
@@ -168,7 +168,7 @@ const Home = () => {
                     className="h-[100%] w-full object-cover rounded-md"
                     alt=""
                   />
-                  <div className="absolute top-0 left-0 rounded-md bg-black text-white bg-opacity-75 h-full w-full flex justify-center items-center text-3xl font-semibold">
+                  <div className="absolute top-0 left-0 rounded-md bg-black text-white bg-opacity-75 h-full w-full flex justify-center items-center text-xl font-semibold">
                     FISH
                   </div>
                 </div>
@@ -181,7 +181,7 @@ const Home = () => {
                   className="h-[100%] w-full object-cover rounded-md"
                   alt=""
                 />
-                <div className="absolute top-0 left-0 rounded-md bg-black text-white bg-opacity-75 h-full w-full flex justify-center items-center text-3xl font-semibold">
+                <div className="absolute top-0 left-0 rounded-md bg-black text-white bg-opacity-75 h-full w-full flex justify-center items-center text-xl font-semibold">
                   MEAT
                 </div>
               </Link>
@@ -193,7 +193,7 @@ const Home = () => {
                   className="h-[100%] w-full object-cover rounded-md"
                   alt=""
                 />
-                <div className="absolute top-0 left-0 rounded-md bg-black text-white bg-opacity-75 h-full w-full flex justify-center items-center text-3xl font-semibold">
+                <div className="absolute top-0 left-0 rounded-md bg-black text-white bg-opacity-75 h-full w-full flex justify-center items-center text-xl font-semibold">
                   FRUITS
                 </div>
               </Link>
@@ -205,7 +205,7 @@ const Home = () => {
                   className="h-[100%] w-full object-cover rounded-md"
                   alt=""
                 />
-                <div className="absolute top-0 left-0 rounded-md bg-black text-white bg-opacity-75 h-full w-full flex justify-center items-center text-3xl font-semibold uppercase">
+                <div className="absolute top-0 left-0 rounded-md bg-black text-white bg-opacity-75 h-full w-full flex justify-center items-center text-xl font-semibold uppercase">
                   Vegetables
                 </div>
               </Link>
@@ -213,7 +213,7 @@ const Home = () => {
           </section>
           {/* Popular Products section  */}
           <section className="p-5 mt-5 bg-[#f6f6f6] ">
-            <h2 className="lg:text-3xl text-xl font-semibold mb-5 uppercase hidden lg:block text-green-500">
+            <h2 className="lg:text-3xl text-xl font-semibold mb-5 uppercase  text-green-500">
               Popular Products
             </h2>
             {populer.length ? (

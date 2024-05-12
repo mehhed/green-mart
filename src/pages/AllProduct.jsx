@@ -197,13 +197,33 @@ const AllProduct = () => {
         </div>
         {/* product section  */}
         <div className="col-span-3">
+          <div className="flex justify-end items-center gap-1 text-gray-600 p-3 mb-5 w-full bg-[#f6f6f6] lg:hidden">
+            <span className="md:text-lg  text-xs font-semibold">
+              Sort By price :
+            </span>
+            <span
+              className="p-1 px-2 bg-white btn border flex justify-center items-center rounded-sm cursor-pointer btn-sm md:btn-md"
+              onClick={() => handlesortIng("lowToHigh")}>
+              Low to Heigh
+            </span>
+            <span
+              className="p-1 px-2 bg-white btn border flex justify-center items-center rounded-sm cursor-pointer btn-sm md:btn-md"
+              onClick={() => handlesortIng("highToLow")}>
+              Heigh to Low{" "}
+            </span>
+            <span
+              className="p-1 px-2 bg-white btn border flex justify-center items-center rounded-sm cursor-pointer btn-sm md:btn-md"
+              onClick={resetSort}>
+              Reset
+            </span>
+          </div>
+
           {loading ? (
             <div className="h-full w-full flex justify-center items-center">
               <span className="loading loading-ring loading-lg"></span>
             </div>
           ) : (
-            <>
-              {" "}
+            <div>
               {allProduct.length ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                   {/* product card */}
@@ -220,7 +240,7 @@ const AllProduct = () => {
                   alt=""
                 />
               )}
-            </>
+            </div>
           )}
         </div>
       </div>

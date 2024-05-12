@@ -86,7 +86,7 @@ const ManageUser = () => {
     console.log(_id);
   };
   return (
-    <div className="w-full pr-5 ">
+    <div className="w-full lg:pr-5 lg:ps-0 p-5">
       {/* admin and user counter  */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
         <div className="h-[100px] w-full bg-gradient-to-r from-[#49dd7f] to-[#16a34a] rounded-lg text-white flex flex-col justify-center gap-3">
@@ -114,7 +114,7 @@ const ManageUser = () => {
         </div>
       ) : (
         <>
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <table className="w-full table rounded-none  table-zebra bg-[#f2f2f2]  ">
               {/* head */}
               <thead className="text-lg capitalize">
@@ -142,13 +142,13 @@ const ManageUser = () => {
       )}
       {/* card for small screen */}
       {loading ? (
-        <div className="h-[300px] w-full flex justify-center items-center lg:hidden">
+        <div className="h-[300px] w-full flex justify-center items-center ">
           <span className="loading loading-ring loading-lg"></span>
         </div>
       ) : (
         <>
           {" "}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:hidden">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 xl:hidden">
             {allUsers.map((oneData) => (
               <UserListCard
                 key={oneData?._id}

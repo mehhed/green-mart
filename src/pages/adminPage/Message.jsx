@@ -15,8 +15,8 @@ const Message = () => {
   }, []);
 
   return (
-    <div>
-      <h1 className="text-3xl text-center py-5 font-semibold bg-[#f2f2f2] mb-2">
+    <div className="px-5 lg:ps-0">
+      <h1 className="text-3xl  text-center py-5 font-semibold bg-[#f2f2f2] mb-2">
         {" "}
         All Messages
       </h1>
@@ -26,7 +26,7 @@ const Message = () => {
           <span className="loading loading-ring loading-lg"></span>
         </div>
       ) : (
-        <>
+        <div className="px-5">
           {" "}
           {message.map((one) => (
             <>
@@ -50,7 +50,7 @@ const Message = () => {
               </div>
             </>
           ))}
-        </>
+        </div>
       )}
     </div>
   );

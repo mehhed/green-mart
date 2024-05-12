@@ -4,11 +4,14 @@ import { AuthProvider } from "../Authentication/AuthenticationProvider";
 import { getAuth, updateProfile } from "firebase/auth";
 import app from "../firebse.config";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+import { number } from "prop-types";
 
 // sweet alert
 
 const Regestation = () => {
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
   // error massage for password
   const [errorInPassword, setError] = useState("");
@@ -20,13 +23,19 @@ const Regestation = () => {
   const specialCharacterChacker = /[!@#\$%\^&\*\(\)_\+{}\[\]:;<>,.?~\\]/;
   const uppercaseChaceker = /[A-Z]/;
 
+  //  img hosting api key
+  const image_hosting_key = `80d516dd4f6c2aaca07b139f3d55dd7e`;
+  const image_hosting_api = `https://api.imgbb.com/1/upload?key=80d516dd4f6c2aaca07b139f3d55dd7e`;
+
   // new user create function
-  const handleRegestation = (e) => {
+  const handleRegestation = async (e) => {
     e.preventDefault();
     console.log(signUP);
     const email = e.target.email.value;
     const password = e.target.password.value;
     const name = e.target.Name.value;
+    const number = e.target.phoenNumber.value;
+    const useImage = e.target.Image.files[0];
 
     if (password.length < 6) {
       setError("password must be six carecters");
@@ -38,29 +47,42 @@ const Regestation = () => {
       setError("password must have a special Character");
       return;
     } else {
-      // create user by email password
-      signUP(email, password)
-        .then(() => {
-          // notification after aceount create
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "aceount created successfully ",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          // update user profile after aceount crate
-          updateProfile(auth.currentUser, {
-            displayName: name,
-          });
+      // post img to img bb and get url
+      console.log(useImage);
+      const imageFile = { image: useImage };
+      const res = await axiosPublic.post(image_hosting_api, imageFile, {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      });
+      console.log(res);
+      if (res.data.success) {
+        // create user by email password
+        signUP(email, password)
+          .then(() => {
+            // notification after aceount create
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "aceount created successfully ",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            // update user profile after aceount crate
+            updateProfile(auth.currentUser, {
+              displayName: name,
+              photoURL: res?.data?.data?.display_url,
+              phoneNumber: number,
+            });
 
-          // navigate to login page after aceount created successfully
-          navigate("/logIn");
-        })
-        .catch((error) => {
-          console.log(error);
-          alert("khaise error");
-        });
+            // navigate to login page after aceount created successfully
+            navigate("/logIn");
+          })
+          .catch((error) => {
+            console.log(error);
+            alert("khaise error");
+          });
+      }
     }
   };
   return (
@@ -90,17 +112,25 @@ const Regestation = () => {
                 className="p-2 text-lg border rounded-sm outline-none"
                 placeholder="  Name"
               />
+              <input
+                type="number"
+                name="phoenNumber"
+                required
+                id=""
+                className="p-2 text-lg border rounded-sm outline-none"
+                placeholder="  phone Number"
+              />
               <label htmlFor="photo" className="text-sm">
-                Chose your photo
+                Upload your photo
               </label>
-              {/* <input
-              type="file"
-              name=""
-              required
-              id="photo"
-              className="p-2 text-lg border rounded-sm outline-none"
-              placeholder="  Photo"
-            /> */}
+              <input
+                type="file"
+                name="Image"
+                required
+                id="photo"
+                className="p-2 text-lg border rounded-sm outline-none"
+                placeholder="  Photo"
+              />
               <input
                 type="email"
                 name="email"

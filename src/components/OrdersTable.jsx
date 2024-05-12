@@ -53,7 +53,7 @@ const OrdersTable = ({ data }) => {
           ) : (
             <>
               <div className="dropdown">
-                <div tabIndex={0} role="button" className="btn m-1">
+                <div tabIndex={0} role="button" className="btn btn-sm m-1">
                   {status} <BiDownArrow></BiDownArrow>
                 </div>
                 <ul
@@ -87,7 +87,7 @@ const OrdersTable = ({ data }) => {
         </td>
         <td className="py-2">
           <button
-            className="btn"
+            className="btn btn-sm"
             onClick={() => document.getElementById("my_modal_3").showModal()}>
             see..
           </button>
@@ -104,6 +104,8 @@ const OrdersTable = ({ data }) => {
             </button>
           </form>
           <h3 className="font-bold text-xl">Delevery Address</h3>
+          <hr />
+          <p>Order ID : {data?._id}</p>
           <hr className="mt-3" />
           <h2 className="text-lg text-gray-600">Contact info</h2>
           <hr />

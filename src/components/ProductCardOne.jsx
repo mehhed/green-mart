@@ -7,7 +7,7 @@ import useAxiosPublic from "../Hooks/useAxiosPublic";
 // toast
 import "react-toastify/dist/ReactToastify.css";
 import useCart from "../Hooks/useCart";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ProductCardOne = ({ oneData }) => {
   const { currentUser } = useContext(AuthProvider);
@@ -61,16 +61,20 @@ const ProductCardOne = ({ oneData }) => {
 
   return (
     <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
-      <div className="flex-1 h-full w-full">
-        <img
-          src={`${PropertieImage}`}
-          alt=""
-          className="h-full w-full object-cover"
-        />
+      <div className="flex-1 h-full w-full overflow-hidden ">
+        <Link to={`/productDetails/:${_id}`}>
+          <img
+            src={`${PropertieImage}`}
+            alt=""
+            className="h-full w-full object-cover hover:scale-125 transition ease-in-out duration-1000"
+          />
+        </Link>
       </div>
       {/* card body  */}
       <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-        <h3 className="text-lg">{productName}</h3>
+        <Link to={`/productDetails/:${_id}`}>
+          <h3 className="text-lg">{productName}</h3>
+        </Link>
         <p className="text-lg font-bold text-green-400">
           {Price}.00
           <sub>tk</sub>
@@ -97,7 +101,7 @@ const ProductCardOne = ({ oneData }) => {
             </div>
           </div>
           <div
-            className="btn  rounded-none uppercase flex justify-center items-center  text-sm text-center cursor-pointer  "
+            className="btn  rounded-none uppercase flex justify-center items-center  text-sm text-center cursor-pointer border bg-white"
             onClick={handleAddToCart}>
             Add to Cart
           </div>

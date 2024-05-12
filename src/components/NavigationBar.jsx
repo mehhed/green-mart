@@ -158,6 +158,9 @@ const NavigationBar = () => {
               {/* admin route  */}
               {adminChacker.userRole == "admin" && (
                 <>
+                  <Link to={"/Dashbord"} className="py-3">
+                    <FaUserTie className="text-xl"></FaUserTie> My Aceount
+                  </Link>
                   <Link to={"/Dashbord/Transaction"} className="py-3">
                     <FaClipboardList className="text-xl"></FaClipboardList>{" "}
                     Transaction

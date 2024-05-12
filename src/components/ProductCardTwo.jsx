@@ -4,15 +4,15 @@ import { GoDash } from "react-icons/go";
 import PropTypes from "prop-types";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { AuthProvider } from "../Authentication/AuthenticationProvider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useCart from "../Hooks/useCart";
 
 const ProductCardTwo = ({ oneProduct }) => {
   const { cart, setCart } = useCart();
-
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
   const { currentUser } = useContext(AuthProvider);
+
   // quntity controler for add to cart
   const [quntity, setQuntity] = useState(1);
   const plusQuntity = () => {
@@ -59,12 +59,20 @@ const ProductCardTwo = ({ oneProduct }) => {
   return (
     <div className="min-h-[300px]  flex flex-col border rounded-md">
       {/* product img */}
-      <img className=" h-[200px] mx-auto" src={PropertieImage} alt="" />
+      <div className="h-[200px] overflow-hidden">
+        <Link to={`/productDetails/${_id}`}>
+          <img
+            className=" h-full mx-auto hover:scale-125 transition ease-in-out duration-1000"
+            src={PropertieImage}
+            alt=""
+          />
+        </Link>
+      </div>
       {/* product body */}
-      <div className="flex-1 p-2 flex flex-col justify-between">
-        <h3 className="text-center text-lg font-semibold text-gray-500">
-          {productName}
-        </h3>
+      <div className="flex-1 p-2 flex flex-col justify-between gap-2">
+        <Link to={`/productDetails/:${_id}`}>
+          <h3 className="text-lg">{productName}</h3>
+        </Link>
         <p className="text-green-500 text-center text-2xl">
           {Price}
           <sub>tk</sub>
@@ -77,13 +85,13 @@ const ProductCardTwo = ({ oneProduct }) => {
             <div className=" flex flex-col justify-center items-center  gap-1">
               <button
                 className="btn btn-xs border p-1 rounded-md font-bold cursor-pointer "
-                onClick={mainusQuntity}>
-                <GoDash></GoDash>
-              </button>
-              <button
-                className="btn btn-xs border p-1 rounded-md font-bold cursor-pointer "
                 onClick={plusQuntity}>
                 <FaPlus />
+              </button>{" "}
+              <button
+                className="btn btn-xs border p-1 rounded-md font-bold cursor-pointer "
+                onClick={mainusQuntity}>
+                <GoDash></GoDash>
               </button>
             </div>
           </div>

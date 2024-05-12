@@ -14,7 +14,7 @@ const Subscribers = () => {
     });
   }, []);
   return (
-    <div>
+    <div className="px-5 lg:ps-0">
       <h1 className="text-3xl text-center py-5 font-semibold bg-[#f2f2f2] mb-2">
         {" "}
         All Subscriber Email
@@ -24,7 +24,7 @@ const Subscribers = () => {
           <span className="loading loading-ring loading-lg"></span>
         </div>
       ) : (
-        <ol>
+        <ol className="px-5">
           {subsciber.map((one, index) => (
             <>
               <li className="text-lg text-gray-600 mt-2">

@@ -34,8 +34,8 @@ const Orders = () => {
           <span className="loading loading-ring loading-lg"></span>
         </div>
       ) : (
-        <div className="w-full h-auto  overflow-x-auto">
-          <table className="  table rounded-none  table-zebra ">
+        <div className="w-full   overflow-scroll">
+          <table className=" h-auto  table rounded-none  table-zebra ">
             {/* head */}
             <thead className="lg:text-lg text-xs capitalize bg-[#f2f2f2]">
               <tr className="border-b  text-center">
