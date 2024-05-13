@@ -25,15 +25,15 @@ const ManageUser = () => {
   useEffect(() => {
     axiosPublic.get("/allUser").then((result) => {
       setAllUsers(result.data);
+      const user = result.data.filter((one) => one.userRole == "user");
+      setTotalUser(user.length);
+      const admin = result.data.filter((one) => one.userRole == "admin");
+      setTotalAdmin(admin.length);
       setLoading(false);
     });
 
     // total user and admin finder
-    const user = allUsers.filter((one) => one.userRole == "user");
-    setTotalUser(user.length);
-    const admin = allUsers.filter((one) => one.userRole == "admin");
-    setTotalAdmin(admin.length);
-  }, [allUsers, axiosPublic]);
+  }, [axiosPublic, setLoading]);
 
   // make admin or remov admin
   const handleMakeAdmin = (_id, email, role) => {

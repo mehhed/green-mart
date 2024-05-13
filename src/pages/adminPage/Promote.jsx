@@ -13,21 +13,17 @@ const Promote = () => {
   const [unPromotedShower, setUnPromotedShower] = useState([]);
 
   useEffect(() => {
-    axiosPublic
-      .get(`http://localhost:5000/allProduct?categories=allProduct`)
-      .then((res) => {
-        if (res.data) {
-          const promotedData = res?.data.filter((one) => one?.promote == true);
-          setPromoted(promotedData);
-          const unPromotedData = res?.data.filter(
-            (one) => one?.promote == false
-          );
-          setUnPromoted(unPromotedData);
-          setUnPromotedShower(unPromotedData);
-          setLoading(false);
-        }
-      });
-  }, []);
+    axiosPublic.get(`/allProduct?categories=allProduct`).then((res) => {
+      if (res.data) {
+        const promotedData = res?.data.filter((one) => one?.promote == true);
+        setPromoted(promotedData);
+        const unPromotedData = res?.data.filter((one) => one?.promote == false);
+        setUnPromoted(unPromotedData);
+        setUnPromotedShower(unPromotedData);
+        setLoading(false);
+      }
+    });
+  }, [axiosPublic]);
 
   // serch system
   const handleSerch = () => {

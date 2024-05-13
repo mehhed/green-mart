@@ -17,7 +17,7 @@ const Orders = () => {
       setOrders(res.data);
       setLoading(false);
     });
-  }, [currentUser?.email]);
+  }, [axiosPublic, currentUser?.email, setLoading]);
 
   const handleModalFunction = (modalData) => {
     setModalData(modalData);

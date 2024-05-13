@@ -12,7 +12,7 @@ const Subscribers = () => {
       setSubscriber(res?.data);
       setLoading(false);
     });
-  }, []);
+  }, [axiosPublic, setLoading]);
   return (
     <div className="px-5 lg:ps-0">
       <h1 className="text-3xl text-center py-5 font-semibold bg-[#f2f2f2] mb-2">

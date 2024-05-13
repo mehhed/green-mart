@@ -22,7 +22,7 @@ const AllProduct = () => {
 
   useEffect(() => {
     axiosPublic
-      .get(`http://localhost:5000/allProduct?categories=${param._id}`)
+      .get(`/allProduct?categories=${param._id}`)
       .then((res) => {
         setAllProduct(res.data);
         setData(res.data);
@@ -31,7 +31,7 @@ const AllProduct = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [param._id]);
+  }, [axiosPublic, param._id, setLoading]);
 
   // find maximum Price
   allProduct.forEach((obj) => {

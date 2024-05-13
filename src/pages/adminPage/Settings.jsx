@@ -48,7 +48,7 @@ const Settings = () => {
       setSubbBannerFour(findsubBannerFour);
       setLoading(false);
     });
-  }, []);
+  }, [axiosPublic, setLoading]);
 
   const bannerControler = async (id) => {
     const productImag = document.getElementById(id).files[0];

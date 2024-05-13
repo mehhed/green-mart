@@ -1,9 +1,8 @@
-import React from "react";
 import { MdDelete } from "react-icons/md";
 import PropTypes from "prop-types";
 
 const CartItemsCard = ({ oneCartData, handleDeleteFromCart }) => {
-  const { _id, id, productName, PropertieImage, quntity, Price } = oneCartData;
+  const { _id, productName, PropertieImage, quntity, Price } = oneCartData;
   return (
     <div className="border ">
       <div className="bg-[#f6f6f6] flex justify-start items-center gap-3 border-b p-3">
@@ -29,4 +28,5 @@ const CartItemsCard = ({ oneCartData, handleDeleteFromCart }) => {
 export default CartItemsCard;
 CartItemsCard.propTypes = {
   oneCartData: PropTypes.object,
+  handleDeleteFromCart: PropTypes.func,
 };

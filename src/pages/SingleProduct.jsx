@@ -32,7 +32,7 @@ const SingleProduct = () => {
       setRecomended(res.data);
       setLoading(false);
     });
-  }, [param?._id]);
+  }, [axiosPublic, param?._id, setLoading]);
 
   // quntity controler for add to cart
   const [quntity, setQuntity] = useState(1);

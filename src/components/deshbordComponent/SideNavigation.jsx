@@ -1,13 +1,7 @@
-import React from "react";
 import { SiWindows } from "react-icons/si";
 import { PiSignOut } from "react-icons/pi";
-import { BiCart, BiHome } from "react-icons/bi";
-import {
-  FaClipboardList,
-  FaFirstOrder,
-  FaListUl,
-  FaUserTie,
-} from "react-icons/fa";
+import { BiHome } from "react-icons/bi";
+import { FaClipboardList, FaListUl, FaUserTie } from "react-icons/fa";
 import { FaUserGroup } from "react-icons/fa6";
 
 import { GrOrderedList, GrUpdate } from "react-icons/gr";
@@ -23,7 +17,6 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { IoSettingsSharp } from "react-icons/io5";
 import useAdmin from "../../Hooks/useAdmin";
-import { TbMenuOrder } from "react-icons/tb";
 
 const SideNavigation = ({ handleSignOut }) => {
   const adminChacker = useAdmin();

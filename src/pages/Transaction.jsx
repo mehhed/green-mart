@@ -7,7 +7,6 @@ import useAdmin from "../Hooks/useAdmin";
 const Transaction = () => {
   const [loading, setLoading] = useState(true);
   const admin = useAdmin();
-  console.log(admin);
   const { currentUser } = useContext(AuthProvider);
   const axiosPublic = useAxiosPublic();
 
@@ -19,7 +18,8 @@ const Transaction = () => {
         setAllTransactions(res.data);
         setLoading(false);
       });
-  }, [admin?.userRole, currentUser?.email]);
+  }, [admin?.userRole, axiosPublic, currentUser?.email]);
+
   return (
     <div className="px-5 lg:ps-0 pr-5">
       <h1 className="text-3xl font-semibold px-5 text-center py-5 mb-2 bg-[#f2f2f2] ">

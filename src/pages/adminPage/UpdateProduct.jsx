@@ -18,7 +18,7 @@ const UpdateProduct = () => {
         setShowProduct(res?.data);
         setLoading(false);
       });
-  }, []);
+  }, [axiosPublic, setLoading]);
 
   const handleSerch = () => {
     const searchData = document.getElementById("search").value;

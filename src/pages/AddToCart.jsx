@@ -20,7 +20,7 @@ const AddToCart = () => {
       setCartItems(res?.data);
       setLoading(false);
     });
-  }, [currentUser?.email]);
+  }, [axiosPublic, currentUser?.email]);
 
   const handleDeleteFromCart = (_id) => {
     axiosPublic.delete(`/delete/${_id}`).then((res) => {

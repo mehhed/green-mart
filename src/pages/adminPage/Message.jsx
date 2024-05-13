@@ -12,7 +12,7 @@ const Message = () => {
       setMessage(res.data);
       setLoading(false);
     });
-  }, []);
+  }, [axiosPublic, setLoading]);
 
   return (
     <div className="px-5 lg:ps-0">

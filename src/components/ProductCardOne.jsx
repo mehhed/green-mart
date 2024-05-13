@@ -8,6 +8,7 @@ import useAxiosPublic from "../Hooks/useAxiosPublic";
 import "react-toastify/dist/ReactToastify.css";
 import useCart from "../Hooks/useCart";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ProductCardOne = ({ oneData }) => {
   const { currentUser } = useContext(AuthProvider);
@@ -45,7 +46,11 @@ const ProductCardOne = ({ oneData }) => {
     const adminOrUser = await axiosPublic.get(`/getUser/${currentUser?.email}`);
     console.log(adminOrUser?.data?.userRole);
     if (adminOrUser?.data?.userRole == "admin") {
-      return alert("Admin cant't buy any item");
+      return Swal.fire({
+        title: "warning",
+        text: "admin Can't buy any items..",
+        icon: "warning",
+      });
     } else if (adminOrUser?.data?.userRole == "user") {
       return axiosPublic.post("/addToCart", addCart).then((res) => {
         if (res.data.acknowledged) {
@@ -62,7 +67,7 @@ const ProductCardOne = ({ oneData }) => {
   return (
     <div className=" w-full  rounded-sm flex justify-center items-center p-3 gap-2 bg-white flex-col sm:flex-row">
       <div className="flex-1 h-full w-full overflow-hidden ">
-        <Link to={`/productDetails/:${_id}`}>
+        <Link to={`/productDetails/${_id}`}>
           <img
             src={`${PropertieImage}`}
             alt=""
@@ -72,7 +77,7 @@ const ProductCardOne = ({ oneData }) => {
       </div>
       {/* card body  */}
       <div className="flex-1 h-full w-full gap-1 flex flex-col justify-between ">
-        <Link to={`/productDetails/:${_id}`}>
+        <Link to={`/productDetails/${_id}`}>
           <h3 className="text-lg">{productName}</h3>
         </Link>
         <p className="text-lg font-bold text-green-400">

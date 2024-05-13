@@ -7,7 +7,7 @@ const RooteHome = () => {
   const navigation = useNavigation();
   return (
     <div className="w-full h-auto">
-      <div className="sticky top-0 z-[9999] -mb-5 lg:mb-0">
+      <div className="sticky top-0 z-[100] -mb-5 lg:mb-0">
         <NavigationBar></NavigationBar>
       </div>
       {navigation.state === "loading" ? (

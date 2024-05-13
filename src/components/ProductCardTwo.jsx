@@ -70,7 +70,7 @@ const ProductCardTwo = ({ oneProduct }) => {
       </div>
       {/* product body */}
       <div className="flex-1 p-2 flex flex-col justify-between gap-2">
-        <Link to={`/productDetails/:${_id}`}>
+        <Link to={`/productDetails/${_id}`}>
           <h3 className="text-lg">{productName}</h3>
         </Link>
         <p className="text-green-500 text-center text-2xl">

@@ -35,6 +35,7 @@ const NavigationBar = () => {
   const adminChacker = useAdmin();
   const navigate = useNavigate();
   const { cart } = useCart();
+  // console.log(cart);
 
   // signOut user
   const handleSignOut = () => {

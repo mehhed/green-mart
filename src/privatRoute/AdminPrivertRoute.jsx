@@ -14,7 +14,7 @@ const AdminPrivertRoute = ({ children }) => {
       setAdmin(res?.data);
       setLoading(false);
     });
-  }, [currentUser?.email]);
+  }, [axiosPublic, currentUser?.email]);
 
   if (loading) {
     return;

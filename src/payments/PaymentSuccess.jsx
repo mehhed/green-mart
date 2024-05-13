@@ -11,7 +11,7 @@ const PaymentSuccess = () => {
     axiosPublic
       .get(`/transsctionDetails/${trans_id}`)
       .then((res) => setPayAmount(res.data));
-  }, []);
+  }, [axiosPublic, trans_id]);
 
   console.log(payAmount);
   return (

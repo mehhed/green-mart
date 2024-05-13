@@ -2,7 +2,7 @@ import { MdDelete } from "react-icons/md";
 import PropTypes from "prop-types";
 
 const CartItemTable = ({ oneCartData, handleDeleteFromCart }) => {
-  const { _id, id, productName, PropertieImage, quntity, Price } = oneCartData;
+  const { _id, productName, PropertieImage, quntity, Price } = oneCartData;
   return (
     <tr className=" border-b">
       <td className="py-2">

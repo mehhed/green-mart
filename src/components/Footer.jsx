@@ -9,7 +9,6 @@ import { AuthProvider } from "../Authentication/AuthenticationProvider";
 
 const Footer = () => {
   const axiosPublic = useAxiosPublic();
-  const { currentUser } = useContext(AuthProvider);
 
   const handleSubscribe = (e) => {
     e.preventDefault();
