@@ -10,7 +10,7 @@ const AdminPrivertRoute = ({ children }) => {
   const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
-    axiosPublic.get(`/getUser/${currentUser?.email}`).then((res) => {
+    axiosPublic.get(`/getUser?email=${currentUser?.email}`).then((res) => {
       setAdmin(res?.data);
       setLoading(false);
     });

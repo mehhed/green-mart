@@ -32,14 +32,14 @@ const Transaction = () => {
           <span className="loading loading-ring loading-lg"></span>
         </div>
       ) : (
-        <div>
-          <table className="w-full table rounded-none  table-zebra   ">
+        <div className="w-full">
+          <table className="w-full table rounded-none table-zebra">
             {/* head */}
-            <thead className="text-lg capitalize bg-[#f2f2f2]">
-              <tr className="border-b border-white ">
-                <th>Email</th>
-                <th>Transaction ID</th>
-                <th>Total amount</th>
+            <thead className="text-lg capitalize bg-[#f2f2f2] p-0">
+              <tr className="border-b border-white text-xs md:text-lg p-0">
+                <th className="p-1">Email</th>
+                <th className="p-1">Transaction ID</th>
+                <th className="p-1"> amount</th>
               </tr>
             </thead>
             <tbody>

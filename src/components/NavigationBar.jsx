@@ -79,9 +79,6 @@ const NavigationBar = () => {
           {adminChacker?.userRole == "user" && (
             <Link to={`/addToCartPage`} className="text-3xl mr-5 mt-2">
               <div className="indicator">
-                <span className="indicator-item badge badge-secondary">
-                  {cart.length > 10 ? "10+" : cart.length}
-                </span>
                 <button className="">
                   <GiShoppingCart />
                 </button>

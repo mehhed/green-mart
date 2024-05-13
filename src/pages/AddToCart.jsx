@@ -38,7 +38,7 @@ const AddToCart = () => {
   }, 0);
 
   return (
-    <div className="px-5 md:px-10 lg:px-20 grid grid-cols-1 lg:grid-cols-3 mt-5 gap-5">
+    <div className="px-5 md:px-10 lg:px-20 grid grid-cols-1 lg:grid-cols-3 mt-5 lg:gap-5">
       <div className="col-span-2">
         <div className="w-full hidden md:block">
           {loading ? (
@@ -102,7 +102,7 @@ const AddToCart = () => {
       {loading ? (
         <div className="w-full h-[350px] skeleton rounded-sm"></div>
       ) : (
-        <div className="p-5 bg-[#f6f6f6]">
+        <div className="p-5 bg-[#f6f6f6] mt-5 lg:mt-0">
           <div className="  space-y-2">
             <div className="flex justify-between items-center">
               <p>Total:</p>
