@@ -22,6 +22,9 @@ const ManageUser = () => {
   // user counter
   const [totalUser, setTotalUser] = useState(0);
 
+  // reFether
+  const [refetch, setRefetch] = useState(true);
+
   useEffect(() => {
     axiosPublic.get("/allUser").then((result) => {
       setAllUsers(result.data);
@@ -33,7 +36,7 @@ const ManageUser = () => {
     });
 
     // total user and admin finder
-  }, [axiosPublic, setLoading]);
+  }, [axiosPublic, refetch, setLoading]);
 
   // make admin or remov admin
   const handleMakeAdmin = (_id, email, role) => {
@@ -41,6 +44,7 @@ const ManageUser = () => {
       .put(`/makeAdminOrRemov?email=${email}&role=${role}`)
       .then((res) => {
         if (res.data) {
+          setRefetch(!refetch);
           toast.success(`${email} now ${role}`, {
             position: "top-right",
             autoClose: 5000,
@@ -71,6 +75,7 @@ const ManageUser = () => {
           .delete(`/deleteUser/${_id}`)
           .then((res) => {
             if (res.data.deletedCount > 0) {
+              setRefetch(!refetch);
               Swal.fire({
                 title: "Deleted!",
                 text: "Your file has been deleted.",

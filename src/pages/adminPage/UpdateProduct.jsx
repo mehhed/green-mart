@@ -11,13 +11,11 @@ const UpdateProduct = () => {
   const [showProduct, setShowProduct] = useState([]);
 
   useEffect(() => {
-    axiosPublic
-      .get(`http://localhost:5000/allProduct?categories=allProduct`)
-      .then((res) => {
-        setProduct(res?.data);
-        setShowProduct(res?.data);
-        setLoading(false);
-      });
+    axiosPublic.get(`/allProduct?categories=allProduct`).then((res) => {
+      setProduct(res?.data);
+      setShowProduct(res?.data);
+      setLoading(false);
+    });
   }, [axiosPublic, setLoading]);
 
   const handleSerch = () => {

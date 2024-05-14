@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 
 const UpdateForm = () => {
   const data = useLoaderData();
+  console.log(data);
   const navigate = useNavigate();
   console.log(data);
   const axiosPublic = useAxiosPublic();

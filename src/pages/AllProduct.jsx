@@ -219,7 +219,7 @@ const AllProduct = () => {
           </div>
 
           {loading ? (
-            <div className="h-full w-full flex justify-center items-center">
+            <div className="h-[400px] w-full flex justify-center items-center">
               <span className="loading loading-ring loading-lg"></span>
             </div>
           ) : (
