@@ -42,7 +42,7 @@ const SideNavigation = ({ handleSignOut }) => {
             <li>
               <Link
                 to={
-                  adminChacker.userRole == "admin"
+                  adminChacker?.userRole == "admin"
                     ? "/Dashbord/adminDashbord"
                     : "/Dashbord/userDeshbord"
                 }

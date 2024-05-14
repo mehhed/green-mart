@@ -2,12 +2,21 @@ import { all } from "axios";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import useCart from "../Hooks/useCart";
 import CheckoutItemList from "./paymentComponents/CheckoutItemList";
+import { useContext, useEffect, useState } from "react";
+import { AuthProvider } from "../Authentication/AuthenticationProvider";
 
 const PaymentForm = () => {
   // import cart details
-  const { cart } = useCart();
-
   const axiosPublic = useAxiosPublic();
+  const { currentUser } = useContext(AuthProvider);
+
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    axiosPublic.get(`/allCart?email=${currentUser?.email}`).then((res) => {
+      setCartItems(res?.data);
+    });
+  }, [axiosPublic, currentUser?.email]);
 
   const handlePaymentForm = (e) => {
     e.preventDefault();
@@ -33,7 +42,7 @@ const PaymentForm = () => {
       messageForDeveleveryMan,
     };
 
-    const allData = { cart, deleveryData };
+    const allData = { cartItems, deleveryData };
 
     axiosPublic.post("/payment", allData).then((res) => {
       window.location.replace(res?.data?.url);
@@ -48,7 +57,7 @@ const PaymentForm = () => {
       </h1>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:px-20 md:px-10 px-5 py-5 bg-[#f6f6f6]">
         <div>
-          {cart.map((one) => (
+          {cartItems?.map((one) => (
             <CheckoutItemList key={one?._id} cartData={one}></CheckoutItemList>
           ))}
         </div>
@@ -148,4 +157,3 @@ const PaymentForm = () => {
 };
 
 export default PaymentForm;
-<h1>payment </h1>;

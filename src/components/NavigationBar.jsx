@@ -27,15 +27,13 @@ import {
   MdOutlineAlternateEmail,
 } from "react-icons/md";
 import { IoSettingsSharp } from "react-icons/io5";
-import useCart from "../Hooks/useCart";
 
 const NavigationBar = () => {
   // loged in user details
   const { currentUser, signOutuser } = useContext(AuthProvider);
   const adminChacker = useAdmin();
+  console.log(adminChacker);
   const navigate = useNavigate();
-  const { cart } = useCart();
-  // console.log(cart);
 
   // signOut user
   const handleSignOut = () => {
@@ -76,7 +74,7 @@ const NavigationBar = () => {
             <FaFacebook></FaFacebook>
           </Link>
           {/* cart page navigator  */}
-          {adminChacker?.userRole == "user" && (
+          {adminChacker?.userRole == "admin" || (
             <Link to={`/addToCartPage`} className="text-3xl mr-5 mt-2">
               <div className="indicator">
                 <button className="">
@@ -118,7 +116,7 @@ const NavigationBar = () => {
               <li>
                 <Link
                   to={
-                    adminChacker.userRole == "admin"
+                    adminChacker?.userRole == "admin"
                       ? "/Dashbord/adminDashbord"
                       : "/Dashbord/userDeshbord"
                   }
@@ -154,7 +152,7 @@ const NavigationBar = () => {
               </Link>
 
               {/* admin route  */}
-              {adminChacker.userRole == "admin" && (
+              {adminChacker?.userRole == "admin" && (
                 <>
                   <Link to={"/Dashbord"} className="py-3">
                     <FaUserTie className="text-xl"></FaUserTie> My Aceount
@@ -199,11 +197,11 @@ const NavigationBar = () => {
                 <Link to={"/Dashbord"} className="py-3">
                   <FaUserTie className="text-xl"></FaUserTie> My Aceount
                 </Link>
-                <Link to={"Transaction"} className="py-3">
+                <Link to={"/Dashbord/Transaction"} className="py-3">
                   <FaClipboardList className="text-xl"></FaClipboardList>{" "}
                   Transaction
                 </Link>
-                <Link to={"order"} className="py-3">
+                <Link to={"/Dashbord/order"} className="py-3">
                   <FaUserTie className="text-xl"></FaUserTie> My Order
                 </Link>
               </li>

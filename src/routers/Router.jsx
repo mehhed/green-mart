@@ -197,9 +197,7 @@ const Router = createBrowserRouter([
               </AdminPrivertRoute>
             ),
             loader: ({ params }) =>
-              fetch(
-                `https://green-mart-server.vercel.app/forUpdate/${params._id}`
-              ),
+              fetch(`https://green-mart-shop.netlify.app/${params._id}`),
           },
 
           // userRoute

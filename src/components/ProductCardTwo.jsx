@@ -39,7 +39,9 @@ const ProductCardTwo = ({ oneProduct }) => {
       Price,
     };
 
-    const adminOrUser = await axiosPublic.get(`/getUser/${currentUser?.email}`);
+    const adminOrUser = await axiosPublic.get(
+      `/getUser?email=${currentUser?.email}`
+    );
     console.log(adminOrUser?.data?.userRole);
     if (adminOrUser?.data?.userRole == "admin") {
       return alert("Admin cant't buy any item");

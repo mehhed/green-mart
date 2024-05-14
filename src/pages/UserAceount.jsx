@@ -40,7 +40,7 @@ const UserAceount = () => {
                 ? currentUser?.phoneNumber
                 : "+880**********"}{" "}
             </p>
-            <p>aceount status : {adminchacker.userRole}</p>
+            <p>aceount status : {adminchacker?.userRole}</p>
           </div>
         </div>
       </div>

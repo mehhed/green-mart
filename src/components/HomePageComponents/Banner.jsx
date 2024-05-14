@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import PropTypes from "prop-types";
 
-const Banner = () => {
+const Banner = ({ banners }) => {
   const axiosPublic = useAxiosPublic();
 
   // banner related useState
@@ -15,34 +16,31 @@ const Banner = () => {
 
   useEffect(() => {
     // main banner
-    axiosPublic.get("/banner").then((res) => {
-      // set main banner
-      const findMainBanner = res.data.find(
-        (one) => one?.bannerName == "mainBanner"
-      );
-      setMainBnner(findMainBanner);
-      // sub banner one
-      const findsubBannerOne = res.data.find(
-        (one) => one?.bannerName == "subBannerOne"
-      );
-      setSubbBannerOne(findsubBannerOne);
-      // sub banner two
-      const findsubBannerTwo = res.data.find(
-        (one) => one?.bannerName == "subBannerTwo"
-      );
-      setSubbBannerTwo(findsubBannerTwo);
-      // sub banner three
-      const findsubBannerThree = res.data.find(
-        (one) => one?.bannerName == "subBannerThree"
-      );
-      setSubbBannerThree(findsubBannerThree);
-      // sub banner  four
-      const findsubBannerFour = res.data.find(
-        (one) => one?.bannerName == "subBannerFour"
-      );
-      setSubbBannerFour(findsubBannerFour);
-    });
-  }, [axiosPublic]);
+    const findMainBanner = banners?.find(
+      (one) => one?.bannerName == "mainBanner"
+    );
+    setMainBnner(findMainBanner);
+    // sub banner one
+    const findsubBannerOne = banners?.find(
+      (one) => one?.bannerName == "subBannerOne"
+    );
+    setSubbBannerOne(findsubBannerOne);
+    // sub banner two
+    const findsubBannerTwo = banners?.find(
+      (one) => one?.bannerName == "subBannerTwo"
+    );
+    setSubbBannerTwo(findsubBannerTwo);
+    // sub banner three
+    const findsubBannerThree = banners?.find(
+      (one) => one?.bannerName == "subBannerThree"
+    );
+    setSubbBannerThree(findsubBannerThree);
+    // sub banner  four
+    const findsubBannerFour = banners?.find(
+      (one) => one?.bannerName == "subBannerFour"
+    );
+    setSubbBannerFour(findsubBannerFour);
+  }, [axiosPublic, banners]);
   return (
     <section className=" lg:h-[400px] flex  justify-between gap-3 items-center  p-5 bg-[#f6f6f6] ">
       {/* main banner  */}
@@ -95,3 +93,6 @@ const Banner = () => {
 };
 
 export default Banner;
+Banner.propTypes = {
+  banners: PropTypes.array,
+};

@@ -8,9 +8,11 @@ const useAdmin = () => {
   const [admin, setAdmin] = useState({});
 
   useEffect(() => {
-    axiosPublic
-      .get(`/getUser?email=${currentUser?.email}`)
-      .then((res) => setAdmin(res?.data));
+    if (currentUser?.email) {
+      axiosPublic
+        .get(`/getUser?email=${currentUser?.email}`)
+        .then((res) => setAdmin(res?.data));
+    }
   }, [axiosPublic, currentUser?.email]);
 
   return admin;
