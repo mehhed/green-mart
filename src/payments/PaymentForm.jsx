@@ -1,6 +1,4 @@
-import { all } from "axios";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
-import useCart from "../Hooks/useCart";
 import CheckoutItemList from "./paymentComponents/CheckoutItemList";
 import { useContext, useEffect, useState } from "react";
 import { AuthProvider } from "../Authentication/AuthenticationProvider";

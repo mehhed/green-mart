@@ -50,7 +50,7 @@ const UpdateProduct = () => {
             setShowProduct(newProductData);
             Swal.fire({
               title: "success",
-              text: "product has delete.....",
+              text: "product has deleted.....",
               icon: "success",
             });
           }

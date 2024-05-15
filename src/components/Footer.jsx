@@ -1,11 +1,6 @@
-import React, { useContext } from "react";
-import { BiSend } from "react-icons/bi";
-import { BsSend } from "react-icons/bs";
-import { IoSearchOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
-import { AuthProvider } from "../Authentication/AuthenticationProvider";
 
 const Footer = () => {
   const axiosPublic = useAxiosPublic();

@@ -6,14 +6,12 @@ import { AuthProvider } from "../Authentication/AuthenticationProvider";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 // toast
 import "react-toastify/dist/ReactToastify.css";
-import useCart from "../Hooks/useCart";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const ProductCardOne = ({ oneData }) => {
   const { currentUser } = useContext(AuthProvider);
   const axiosPublic = useAxiosPublic();
-  const { cart, setCart } = useCart();
 
   const navigate = useNavigate();
 
@@ -49,16 +47,20 @@ const ProductCardOne = ({ oneData }) => {
     console.log(adminOrUser?.data?.userRole);
     if (adminOrUser?.data?.userRole == "admin") {
       return Swal.fire({
-        title: "warning",
+        title: "error",
         text: "admin Can't buy any items..",
-        icon: "warning",
+        icon: "error",
       });
     } else if (adminOrUser?.data?.userRole == "user") {
       return axiosPublic.post("/addToCart", addCart).then((res) => {
         if (res.data.acknowledged) {
-          const newCart = [...cart, addCart];
-          setCart(newCart);
-          alert("item add to cart");
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "item add to cart",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
     } else {

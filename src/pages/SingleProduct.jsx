@@ -6,20 +6,19 @@ import { PiPlus } from "react-icons/pi";
 import { useNavigate, useParams } from "react-router-dom";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { AuthProvider } from "../Authentication/AuthenticationProvider";
-import useCart from "../Hooks/useCart";
+
 import useLoading from "../Hooks/useLoading";
 import { FacebookShareButton } from "react-share";
 import ProductCardTwo from "../components/ProductCardTwo";
+import Swal from "sweetalert2";
 
 const SingleProduct = () => {
   const { loading, setLoading } = useLoading();
   const param = useParams();
   const axiosPublic = useAxiosPublic();
   const { currentUser } = useContext(AuthProvider);
-  const { cart, setCart } = useCart();
   const navigate = useNavigate();
   const currectLocation = window.location.pathname;
-
   const [recomended, setRecomended] = useState([]);
   const [data, setData] = useState({});
 
@@ -47,7 +46,6 @@ const SingleProduct = () => {
 
   // product data
   const { _id, productName, PropertieImage, Price, productCategories } = data;
-
   const handleAddToCart = async () => {
     const addCart = {
       id: _id,
@@ -66,9 +64,13 @@ const SingleProduct = () => {
     } else if (adminOrUser?.data?.userRole == "user") {
       return axiosPublic.post("/addToCart", addCart).then((res) => {
         if (res.data.acknowledged) {
-          const newCart = [...cart, addCart];
-          setCart(newCart);
-          alert("item add to cart");
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "item add to cart..",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
     } else {

@@ -19,8 +19,6 @@ const Home = () => {
     });
   }, [axiosPublic]);
 
-  console.log(" allah thik koira dan ", allProduct);
-
   return (
     <>
       {loading ? (

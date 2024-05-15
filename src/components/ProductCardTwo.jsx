@@ -5,10 +5,9 @@ import PropTypes from "prop-types";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { AuthProvider } from "../Authentication/AuthenticationProvider";
 import { Link, useNavigate } from "react-router-dom";
-import useCart from "../Hooks/useCart";
+import Swal from "sweetalert2";
 
 const ProductCardTwo = ({ oneProduct }) => {
-  const { cart, setCart } = useCart();
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
   const { currentUser } = useContext(AuthProvider);
@@ -44,13 +43,21 @@ const ProductCardTwo = ({ oneProduct }) => {
     );
     console.log(adminOrUser?.data?.userRole);
     if (adminOrUser?.data?.userRole == "admin") {
-      return alert("Admin cant't buy any item");
+      return Swal.fire({
+        title: "error",
+        text: "admin Can't buy any items..",
+        icon: "error",
+      });
     } else if (adminOrUser?.data?.userRole == "user") {
       return axiosPublic.post("/addToCart", addCart).then((res) => {
         if (res.data.acknowledged) {
-          const newCart = [...cart, addCart];
-          setCart(newCart);
-          alert("item add to cart");
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "item add to cart",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
     } else {

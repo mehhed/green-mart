@@ -13,7 +13,7 @@ const UserAceount = () => {
         Hi, {currentUser?.displayName}
       </h1>
       <div className="grid grid-cols-1 lg:grid-cols-2 w-full items-center mt-3">
-        <div className="border-r-[#2fbf64] border-r-2 bg-[#f6f6f6] flex-1 w-full flex justify-center flex-col items-center py-10">
+        <div className="lg:border-r-[#2fbf64] lg:border-r-2 bg-[#f6f6f6] flex-1 w-full flex justify-center flex-col items-center py-10">
           {currentUser?.photoURL ? (
             <img
               src={currentUser?.photoURL}
@@ -40,7 +40,6 @@ const UserAceount = () => {
                 ? currentUser?.phoneNumber
                 : "+880**********"}{" "}
             </p>
-            <p>aceount status : {adminchacker?.userRole}</p>
           </div>
         </div>
       </div>

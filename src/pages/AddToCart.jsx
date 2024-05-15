@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import { MdDelete } from "react-icons/md";
 import { AuthProvider } from "../Authentication/AuthenticationProvider";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import CartItemTable from "../components/CartItemTable";
 import CartItemsCard from "../components/CartItemsCard";
-import useCart from "../Hooks/useCart";
+
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AddToCart = () => {
   // loged in user details
@@ -13,7 +13,6 @@ const AddToCart = () => {
   const axiosPublic = useAxiosPublic();
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { setCart } = useCart();
 
   useEffect(() => {
     axiosPublic.get(`/allCart?email=${currentUser?.email}`).then((res) => {
@@ -27,8 +26,14 @@ const AddToCart = () => {
       console.log(res.data);
       if (res?.data?.deletedCount > 0) {
         const newCartData = cartItems.filter((one) => one?._id != _id);
-        setCart(newCartData);
         setCartItems(newCartData);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "item deleted from  cart",
+          showConfirmButton: false,
+          timer: 1000,
+        });
       }
     });
   };

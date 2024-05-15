@@ -63,7 +63,7 @@ const ItemAddForm = () => {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: `${productName} is added to the menu.`,
+          title: `${productName} is added to successfully `,
           showConfirmButton: false,
           timer: 1500,
         });

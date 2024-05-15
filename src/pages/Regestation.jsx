@@ -13,8 +13,12 @@ const Regestation = () => {
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
 
+  // loader
+  const [loading, setLoading] = useState(false);
+
   // error massage for password
   const [errorInPassword, setError] = useState("");
+  const [createError, setCreateError] = useState("");
 
   const auth = getAuth(app);
   const { signUP } = useContext(AuthProvider);
@@ -30,6 +34,7 @@ const Regestation = () => {
   // new user create function
   const handleRegestation = async (e) => {
     e.preventDefault();
+    setLoading(true);
     console.log(signUP);
     const email = e.target.email.value;
     const password = e.target.password.value;
@@ -79,8 +84,8 @@ const Regestation = () => {
             navigate("/logIn");
           })
           .catch((error) => {
-            console.log(error);
-            alert("khaise error");
+            setCreateError("email allready used");
+            setLoading(false);
           });
       }
     }
@@ -139,6 +144,7 @@ const Regestation = () => {
                 className="p-2 text-lg border rounded-sm outline-none"
                 placeholder="  Email"
               />
+              <span className="text-red-500">{createError}</span>
               <input
                 type="password"
                 name="password"
@@ -159,11 +165,17 @@ const Regestation = () => {
                 <Link to={"/logIn"}>Log in</Link>
               </div>
               <div className="text-center">
-                <input
-                  type="submit"
-                  value="Sign up"
-                  className="bg-gray-200 px-4 py-2 mt-5 rounded-md "
-                />
+                {loading ? (
+                  <span className="btn bg-gray-200 px-10  mt-5 rounded-md">
+                    <span className="loading loading-spinner loading-xs"></span>
+                  </span>
+                ) : (
+                  <input
+                    type="submit"
+                    value="Sign up"
+                    className="bg-gray-200 px-4 py-2 mt-5 rounded-md "
+                  />
+                )}
               </div>
             </form>
           </div>

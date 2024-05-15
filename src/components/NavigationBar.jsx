@@ -32,7 +32,6 @@ const NavigationBar = () => {
   // loged in user details
   const { currentUser, signOutuser } = useContext(AuthProvider);
   const adminChacker = useAdmin();
-  console.log(adminChacker);
   const navigate = useNavigate();
 
   // signOut user
@@ -74,7 +73,7 @@ const NavigationBar = () => {
             <FaFacebook></FaFacebook>
           </Link>
           {/* cart page navigator  */}
-          {adminChacker?.userRole == "admin" || (
+          {adminChacker?.userRole == "user" && (
             <Link to={`/addToCartPage`} className="text-3xl mr-5 mt-2">
               <div className="indicator">
                 <button className="">
